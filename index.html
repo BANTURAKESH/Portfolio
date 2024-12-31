@@ -28,7 +28,6 @@
             text-decoration: none;
             margin: 0 1rem;
             font-weight: bold;
-            cursor: pointer;
         }
         nav a:hover {
             text-decoration: underline;
@@ -38,11 +37,7 @@
             text-align: center;
         }
         section {
-            display: none; /* Initially hide all sections */
             margin-bottom: 2rem;
-        }
-        section.active {
-            display: block; /* Show only the active section */
         }
         footer {
             background-color: #333;
@@ -61,69 +56,78 @@
         <h1>Rakesh Bantu</h1>
     </header>
     <nav>
-        <a onclick="showSection('about')">About Me</a>
-        <a onclick="showSection('research-projects')">Research Projects</a>
-        <a onclick="showSection('skills')">Skills</a>
-        <a onclick="showSection('news-photos')">News/Photos</a>
-        <a onclick="showSection('contact')">Contact</a>
+        <a href="#about">About Me</a>
+        <a href="#projects">Research Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#news-photos">News/Photos</a>
+        <a href="#contact">Contact</a>
     </nav>
     <main>
-        <section id="about" class="active">
+        <section id="about">
             <h2>About Me</h2>
-            <p>Highly motivated and results-oriented professional with a deep passion for integrating AI, machine learning, and computational biology to advance the understanding of life sciences field. Committed to utilizing these cutting-edge technologies to unlock a deeper understanding of biological systems, ultimately paving the way for transformative advancements in the fight against human diseases. Eager to contribute expertise and foster collaboration within multidisciplinary teams to accelerate scientific discovery and generate a positive impact on global health and sustainability.</p>
+            <p>
+                Highly motivated and results-oriented professional with a deep passion for integrating AI, machine learning, 
+                and computational biology to advance the understanding of the life sciences field. Committed to utilizing 
+                these cutting-edge technologies to unlock a deeper understanding of biological systems, ultimately paving 
+                the way for transformative advancements in the fight against human diseases. Eager to contribute expertise 
+                and foster collaboration within multidisciplinary teams to accelerate scientific discovery and generate a 
+                positive impact on global health and sustainability.
+            </p>
         </section>
-        <section id="research-projects">
+        <section id="projects">
             <h2>Research Projects</h2>
-            <p>Here are some of my key research projects:</p>
             <ul>
-                <li><strong>Pharmacokinetic Parameters Prediction (Aragen Life Sciences, 10/2023 - 04/2024):
-                </strong> I undertook the project "Multi-class High-performance Deep Learning Approach to predict levels of Pharmacokinetic parameters (Vdss and PPB) - FDA approved oral drugs as a case study.
-                " This study developed predictive models for pharmacokinetic parameters using molecular descriptors computation, feature engineering, and machine learning techniques. 
-                Tools used include Pedalpy, RDKit, and QikProp of Schrödinger.</li>
-
-                <li><strong>Early Diagnosis of Parkinson's Disease (Masters Thesis, Central University of Punjab, 01/2023 - 07/2023):
-                </strong> Explored the potential of machine learning algorithms for diagnosing Parkinson's disease using gene expression profiles. 
-                Multi-layer perceptron achieved 93% accuracy in differentiating PD patients from healthy controls, highlighting the potential for early detection of PD through gene expression data.</li>
+                <li>
+                    <strong>Pharmacokinetic parameters, (Aragen Life Sciences):</strong>
+                    <p>
+                        Multi-class high-performance deep learning approach to predict levels of pharmacokinetics parameters 
+                        (Vdss and PPB) for FDA-approved oral drugs as a case study. The project utilized molecular descriptors 
+                        computation and feature engineering techniques, leveraging tools like Pedalpy, RDKit, and Schrödinger's 
+                        QikProp for descriptor generation.
+                    </p>
+                </li>
+                <li>
+                    <strong>Masters Thesis, (Central University Of Punjab):</strong>
+                    <p>
+                        Early diagnosis of dopamine transporter imaging-confirmed Parkinson’s Disease using machine learning 
+                        and artificial neural networks. Gradient Boosting achieved high accuracy (93%) in differentiating PD 
+                        patients from healthy controls. Identified genes influencing the models highlight potential roles in 
+                        PD diagnosis.
+                    </p>
+                </li>
             </ul>
         </section>
         <section id="skills">
             <h2>Skills</h2>
-            <p>Here are some of my key skills:</p>
             <ul>
-               <li><b>Languages:</b> R (Bioconductor, tidyverse, dplyr, ggplot2), Python (seaborn, plotly, scipy, numpy, pandas, BioPython, RDKit, Pedalpy), Nextflow, MatLab, GitHub.</li>
-               <li><b>OS/Software:</b> Linux, SQL/MySQL, Microsoft Office, Windows.</li>
-               <li><b>Genomic:</b> NGS data analysis, Single-cell omics and integration, pathways enrichment, network analysis, Microarray Data analysis, Galaxy.eu.</li>
-               <li><b>Machine Learning and Deep Learning:</b> Feature selection, AI/ML/DL model building and optimization (Regression, Classification, Clustering, Bayesian), Python-Scikit-learn, TensorFlow, Keras, PyTorch, OpenCV, ANN, RNN, CNN, DNN, MLP, Time series, Reinforcement learning, NLP (NLTK, Sentence transformers).</li>
-               <li><b>Data Science:</b> NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, Data Mining (WEKA Software).</li>
-               <li><b>Drug Discovery:</b> Pharmacology (pharmacokinetics, pharmacodynamics), Cheminformatics, Molecular descriptor calculation (RDKit, Pedalpy, Schrödinger Suite Packages (Maestro)), Pharmacophore Modeling.</li>
-               <li><b>Structural Biophysics:</b> Protein and Nucleic Acid homology Modeling, Virtual Screening, Molecular Docking and MD Simulations studies, Free Energy Calculations, Protein modelling (Modeler, I-TASSER, Swiss Model), RNA model, AutoDock4, vina, H-Dock, Ligplot, Chem Draw, UCSF Chimera, PyRx, PyMOL, NAMD, VMD, GROMAC, Alphafold.</li>
-               <li><b>Network Biology:</b> Protein-Protein Interaction network (Cytoscape), Protein-Ligand Interactions.</li>
-               <li><b>Knowledge Specialties:</b> Data Visualization (Python, R), Data Manipulation, Data Processing, Molecular Biology, Chemistry, Protein Chemistry, Proteomics, Fastq/Fasta/BAM/SAM file management, Algorithm Development.</li>
-               <li><b>Public Domain Databases:</b> GenBank, PubMed, BLAST, DrugBank, UniProt, InterPro, Ensembl, KEGG, String Database, PDB, GEO, TCGA, OMIM.</li>
+                <li>
+                    <strong>Computational Skills:</strong>
+                    <ul>
+                        <li>Languages: R (Bioconductor, tidyverse), Python (RDKit, Pedalpy), Nextflow, MatLab</li>
+                        <li>Software: Linux, Docker, SQL/MySQL, Microsoft Office</li>
+                        <li>Genomic Analysis: NGS data analysis, Single-cell omics, pathway enrichment</li>
+                        <li>Machine Learning: AI/ML/DL models, Natural Language Processing</li>
+                        <li>Drug Discovery: Pharmacokinetics, Cheminformatics, Molecular Docking</li>
+                        <li>Structural Biophysics: MD Simulations, Free Energy Calculations, Protein Modeling</li>
+                        <li>Network Biology: Protein-Protein Interaction analysis</li>
+                        <li>Public Databases: GenBank, PubMed, DrugBank, UniProt, GEO</li>
+                    </ul>
+                </li>
             </ul>
         </section>
         <section id="news-photos">
             <h2>News/Photos</h2>
-            <p>Stay tuned for the latest updates on my research and professional achievements.</p>
-            <p>Explore moments from my professional journey and projects.</p>
+            <p>Stay tuned for the latest updates on my research, achievements, and professional journey.</p>
         </section>
         <section id="contact">
             <h2>Contact</h2>
-            <p>Feel free to reach out to me at <a href="mailto:rakeshbantu04@gmail.com">rakeshbantu04@gmail.com</a>.</p>
-            <p>Connect with me on <a href="https://www.linkedin.com/in/rakesh-bantu/" target="_blank">LinkedIn</a> and <a href="https://github.com/BANTURAKESH" target="_blank">GitHub</a>.</p>
+            <p>Email: <a href="mailto:rakeshbantu04@gmail.com">rakeshbantu04@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/rakesh-bantu/" target="_blank">https://www.linkedin.com/in/rakesh-bantu/</a></p>
+            <p>GitHub: <a href="https://github.com/BANTURAKESH" target="_blank">https://github.com/BANTURAKESH</a></p>
         </section>
     </main>
     <footer>
         &copy; 2024 Rakesh Bantu. All rights reserved.
     </footer>
-    <script>
-        function showSection(id) {
-            const sections = document.querySelectorAll("section");
-            sections.forEach(section => {
-                section.classList.remove("active");
-            });
-            document.getElementById(id).classList.add("active");
-        }
-    </script>
 </body>
 </html>
