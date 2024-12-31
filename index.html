@@ -28,6 +28,7 @@
             text-decoration: none;
             margin: 0 1rem;
             font-weight: bold;
+            cursor: pointer;
         }
         nav a:hover {
             text-decoration: underline;
@@ -37,7 +38,11 @@
             text-align: center;
         }
         section {
+            display: none; /* Initially hide all sections */
             margin-bottom: 2rem;
+        }
+        section.active {
+            display: block; /* Show only the active section */
         }
         footer {
             background-color: #333;
@@ -56,14 +61,14 @@
         <h1>Rakesh Bantu</h1>
     </header>
     <nav>
-        <a href="#about">About Me</a>
-        <a href="#research-projects">Research Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#news-photos">News/Photos</a>
-        <a href="#contact">Contact</a>
+        <a onclick="showSection('about')">About Me</a>
+        <a onclick="showSection('research-projects')">Research Projects</a>
+        <a onclick="showSection('skills')">Skills</a>
+        <a onclick="showSection('news-photos')">News/Photos</a>
+        <a onclick="showSection('contact')">Contact</a>
     </nav>
     <main>
-        <section id="about">
+        <section id="about" class="active">
             <h2>About Me</h2>
             <p>Highly motivated and results-oriented professional with a deep passion for integrating AI, machine learning, and computational biology to advance the understanding of life sciences field. Committed to utilizing these cutting-edge technologies to unlock a deeper understanding of biological systems, ultimately paving the way for transformative advancements in the fight against human diseases. Eager to contribute expertise and foster collaboration within multidisciplinary teams to accelerate scientific discovery and generate a positive impact on global health and sustainability.</p>
         </section>
@@ -71,11 +76,14 @@
             <h2>Research Projects</h2>
             <p>Here are some of my key research projects:</p>
             <ul>
-                <li><strong>Pharmacokinetic Parameters Prediction (Aragen Life Sciences, 10/2023 - 04/2024):</strong> I undertook the project "Multi-class High-performance Deep Learning Approach to predict levels of Pharmacokinetic parameters (Vdss and PPB) - FDA approved oral drugs as a case study." This study developed predictive models for pharmacokinetic parameters using molecular descriptors computation, feature engineering, and machine learning techniques. Tools used include Pedalpy, RDKit, and QikProp of Schrödinger.</li>
-                <li><strong>Blood Transcriptome Biomarkers for Parkinson's Disease:</strong> Identification of biomarkers using microarray data and ML algorithms (AUC = 0.96).</li>
-                <li><strong>Pharmacokinetic Parameter Prediction:</strong> Developed models to predict Vdss and PPB using deep learning and quantum chemical descriptors.</li>
-                <li><strong>Generative Models for Protein-Ligand Complexes:</strong> Curated datasets for pretraining generative models in drug discovery.</li>
-                <li><strong>Early Diagnosis of Parkinson's Disease (Masters Thesis, Central University of Punjab, 01/2023 - 07/2023):</strong> Explored the potential of machine learning algorithms for diagnosing Parkinson's disease using gene expression profiles. Gradient Boosting achieved 93% accuracy in differentiating PD patients from healthy controls, highlighting the potential for early detection of PD through gene expression data.</li>
+                <li><strong>Pharmacokinetic Parameters Prediction (Aragen Life Sciences, 10/2023 - 04/2024):
+                </strong> I undertook the project "Multi-class High-performance Deep Learning Approach to predict levels of Pharmacokinetic parameters (Vdss and PPB) - FDA approved oral drugs as a case study.
+                " This study developed predictive models for pharmacokinetic parameters using molecular descriptors computation, feature engineering, and machine learning techniques. 
+                Tools used include Pedalpy, RDKit, and QikProp of Schrödinger.</li>
+
+                <li><strong>Early Diagnosis of Parkinson's Disease (Masters Thesis, Central University of Punjab, 01/2023 - 07/2023):
+                </strong> Explored the potential of machine learning algorithms for diagnosing Parkinson's disease using gene expression profiles. 
+                Multi-layer perceptron achieved 93% accuracy in differentiating PD patients from healthy controls, highlighting the potential for early detection of PD through gene expression data.</li>
             </ul>
         </section>
         <section id="skills">
@@ -108,5 +116,14 @@
     <footer>
         &copy; 2024 Rakesh Bantu. All rights reserved.
     </footer>
+    <script>
+        function showSection(id) {
+            const sections = document.querySelectorAll("section");
+            sections.forEach(section => {
+                section.classList.remove("active");
+            });
+            document.getElementById(id).classList.add("active");
+        }
+    </script>
 </body>
 </html>
