@@ -2,137 +2,852 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rakesh Bantu – Portfolio</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakesh Bantu - Bioinformatics & ML Researcher</title>
     <style>
-        body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f6f8fa; color:#222;}
-        header {background: #0074D9; color:#fff; padding:2rem 1rem; text-align:center;}
-        section {background:#fff; margin:2rem auto; padding:2rem; border-radius:10px; box-shadow:0 2px 6px #e0e0e0; max-width:800px;}
-        h1, h2 {margin-top:0;}
-        .contacts {margin:1rem 0;}
-        .skills, .competencies, .links {display:flex; flex-wrap:wrap; gap:1.5rem;}
-        ul {margin:0.5rem 0;}
-        footer {text-align:center; color:#888; margin:2rem;}
-        a {color:#0377fc;}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3b82f6;
+            --secondary: #60a5fa;
+            --accent: #818cf8;
+            --dark: #000000;
+            --light: #1a1a1a;
+            --text: #e5e5e5;
+            --text-secondary: #a3a3a3;
+            --card-bg: #0f0f0f;
+            --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.2);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%), #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%233b82f620" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,218.7C672,203,768,149,864,128C960,107,1056,117,1152,133.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat;
+            animation: wave 10s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-50%) translateY(0); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--secondary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--secondary);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+            border-color: var(--accent);
+        }
+
+        .skill-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-card h3::before {
+            content: '🔬';
+            font-size: 1.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            color: var(--text);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            width: 45%;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+            border-color: var(--accent);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 55%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: 2rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date {
+            right: -60%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            left: -60%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 4px solid var(--dark);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+            border-color: var(--accent);
+        }
+
+        .project-header {
+            background: var(--gradient);
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 0.25rem 0.5rem;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            color: var(--text);
+        }
+
+        /* Publications */
+        .publication-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .publication-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .publication-card a {
+            color: var(--accent);
+        }
+
+        .publication-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .status-submitted {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-preparation {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--gradient);
+            color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            background: white;
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+            
+            .timeline-dot {
+                left: 30px;
+            }
+            
+            .timeline-date {
+                position: static;
+                margin-bottom: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
-<header>
-    <h1>Rakesh Bantu</h1>
-    <p>Researcher | Computational Biology & Bioinformatics | Machine Learning in Life Sciences</p>
-    <div class="contacts">
-        <span>Hyderabad, India | </span>
-        <span>Phone: +91 7013315856 | </span>
-        <span>Email: rakeshbantu04@gmail.com | </span>
-        <a href="https://www.linkedin.com/in/rakesh-bantu" target="_blank">LinkedIn</a> |
-        <a href="https://github.com/BANTURAKESH" target="_blank">GitHub</a>
-    </div>
-    <p>“The value of education is not learning many facts, but the training of the mind to think.”</p>
-</header>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">RB</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<section>
-    <h2>Profile</h2>
-    <p>Highly motivated and result-oriented Researcher passionate about integrating Computer Science and Computational Biology to advance life sciences and global health. Skilled in multidisciplinary collaborations and committed to transformative research with a focus on drug discovery, genomics, and data-driven biology.</p>
-</section>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Rakesh Bantu</h1>
+            <h2>Bioinformatics & Machine Learning Researcher</h2>
+            <p class="hero-description">
+                Passionate about integrating Computer Science and Computational Biology to advance life sciences. 
+                Specializing in AI/ML applications for drug discovery, genomics analysis, and transformative healthcare solutions.
+                Currently pursuing PhD in Biomedical Engineering at Syracuse University while advancing cutting-edge research in Single-cell RNA sequencing (scRNA-seq).
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="https://github.com/BANTURAKESH" target="_blank" class="btn btn-secondary">
+                    View GitHub
+                </a>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Education</h2>
-    <ul>
-        <li>
-            <b>Masters in Bioinformatics</b>, Central University of Punjab<br>
-            2021–2023 | Cumulative GPA: 6.99 (Good), Grade B
-        </li>
-        <li>
-            <b>Bachelors in Biochemistry</b>, Osmania University, Hyderabad<br>
-            2018–2021 | Cumulative GPA: 8.59
-        </li>
-    </ul>
-</section>
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Machine Learning & AI</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">Keras</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">Feature Engineering</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Bioinformatics & Genomics</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">RNA-seq Analysis</span>
+                    <span class="skill-tag">scRNA-seq</span>
+                    <span class="skill-tag">Seurat</span>
+                    <span class="skill-tag">Scanpy</span>
+                    <span class="skill-tag">NGS Data</span>
+                    <span class="skill-tag">Pathway Enrichment</span>
+                    <span class="skill-tag">Network Analysis</span>
+                    <span class="skill-tag">Multi-omics</span>
+                    <span class="skill-tag">Biomarker Discovery</span>
+                    <span class="skill-tag">Galaxy.eu</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Drug Discovery</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Molecular Docking</span>
+                    <span class="skill-tag">Virtual Screening</span>
+                    <span class="skill-tag">SBDD</span>
+                    <span class="skill-tag">FBDD</span>
+                    <span class="skill-tag">Pharmacophore Modeling</span>
+                    <span class="skill-tag">RDKit</span>
+                    <span class="skill-tag">Schrodinger</span>
+                    <span class="skill-tag">AutoDock</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Molecular Dynamics</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">GROMACS</span>
+                    <span class="skill-tag">NAMD</span>
+                    <span class="skill-tag">VMD</span>
+                    <span class="skill-tag">Protein Modeling</span>
+                    <span class="skill-tag">AlphaFold</span>
+                    <span class="skill-tag">PyMOL</span>
+                    <span class="skill-tag">Chimera</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Programming & Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">BioPython</span>
+                    <span class="skill-tag">Bioconductor</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Git/GitHub</span>
+                    <span class="skill-tag">Data Visualization</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Databases & Resources</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">PDB</span>
+                    <span class="skill-tag">NCBI</span>
+                    <span class="skill-tag">UniProt</span>
+                    <span class="skill-tag">KEGG</span>
+                    <span class="skill-tag">DrugBank</span>
+                    <span class="skill-tag">TCGA</span>
+                    <span class="skill-tag">GEO</span>
+                    <span class="skill-tag">PubChem</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Skills</h2>
-    <div class="skills">
-        <ul>
-            <li>Programming: R, Python</li>
-            <li>Libraries: Scikit-learn, TensorFlow, Keras, PyTorch</li>
-            <li>Bioinformatics: RNA-seq, NGS data analysis</li>
-            <li>Cheminformatics: RDKit, Pedalpy, Schrodinger Suite</li>
-            <li>Data Science: NumPy, Pandas, Matplotlib, Seaborn</li>
-            <li>Structural Biology: Molecular docking, Modelling (I-TASSER, PyMOL)</li>
-            <li>Network Biology: Cytoscape</li>
-        </ul>
-    </div>
-</section>
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Research Assistant</h3>
+                    <h4>Syracuse University, USA, Syracuse, New York</h4>
+                    <p>Conducting research in computational biology and biomedical engineering. Developing novel ML approaches for Single cell data.</p>
+                    <span class="timeline-date">Aug 2025 - Present</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Research Associate</h3>
+                    <h4>Aragen Life Sciences Ltd, India, Hyderabad</h4>
+                    <p>Building ML models for pharmacokinetic parameters, small molecule generation using Deep Learning and Reinforcement Learning, contributing to CADD research projects.</p>
+                    <span class="timeline-date">Oct 2023 - Jun 2025</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Master's Thesis Research</h3>
+                    <h4>Central University of Punjab, India</h4>
+                    <p>Identified blood transcriptome biomarkers for early Parkinson's Disease diagnosis using ML algorithms. Achieved 90% accuracy with MLP algorithm.</p>
+                    <span class="timeline-date">Jan - Jul 2023</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Professional Experience</h2>
-    <ul>
-        <li>
-            <b>Research Associate, Aragen Life Sciences Ltd, Hyderabad</b> (Oct 2023 – Present)<br>
-            Building Machine Learning models for pharmacokinetic parameters, generating small molecules using Deep Learning and Reinforcement Learning, and contributing to Computer Aided Drug Discovery.
-        </li>
-    </ul>
-</section>
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>PhD in Biomedical Engineering</h3>
+                    <h4>Syracuse University, New York, USA</h4>
+                    <p>Advanced research in computational biology and biomedical applications of AI/ML</p>
+                    <span class="timeline-date">Aug 2025 - 2030</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Master's in Bioinformatics</h3>
+                    <h4>Central University of Punjab, India</h4>
+                    <p>CGPA: 6.99, Grade: B+ (Good)</p>
+                    <span class="timeline-date">2021 - 2023</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Bachelor's in Biochemistry</h3>
+                    <h4>Osmania University, India, Hyderabad</h4>
+                    <p>CGPA: 8.59</p>
+                    <span class="timeline-date">2018 - 2021</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Projects & Research</h2>
-    <ul>
-        <li>
-            <b>Blood Transcriptome Biomarkers for Early Parkinson’s Diagnosis</b><br>
-            Used machine learning algorithms on gene expression profiles to distinguish PD patients (achieved 90% accuracy).
-        </li>
-        <li>
-            <b>Pharmacokinetic Parameter Prediction</b><br>
-            Developed ML models for drug PK parameters (Vd, PPB), leveraging descriptor computation and feature engineering (Pedalpy, RDKit, Schrodinger).
-        </li>
-        <li>
-            <b>Personal ML Projects</b>: Heart disease prediction, breast cancer prediction (UCI datasets), YOLOv8 vision, text clustering, spam mail detection ([GitHub](https://github.com/BANTURAKESH))
-        </li>
-    </ul>
-</section>
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Research Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Pharmacokinetic Parameters Prediction</h3>
+                </div>
+                <div class="project-body">
+                    <p>Developed Deep Learning models for predicting Vdss and PPB parameters using molecular descriptors from Pedalpy, RDKit, and Schrodinger QikProp.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">RDKit</span>
+                        <span class="tech-tag">Pedalpy</span>
+                        <span class="tech-tag">Feature Engineering</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Study and Identification of Blood Transcriptome Biomarkers for Early Diagnosis of Parkinson's Disease by Utilizing Bioinformatics tools and Machine Learning Algorithms</h3>
+                </div>
+                <div class="project-body">
+                    <p>Identified blood transcriptome biomarkers for early PD diagnosis. MLP achieved 90% accuracy in differentiating patients from healthy controls.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Gene Expression</span>
+                        <span class="tech-tag">MLP</span>
+                        <span class="tech-tag">Bioinformatics</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Disease Prediction Models</h3>
+                </div>
+                <div class="project-body">
+                    <p>Built multiple ML models for disease prediction including Parkinson's (voice signals), heart disease, and breast cancer using UCI datasets.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Classification</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Data Science</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Computer Vision Projects</h3>
+                </div>
+                <div class="project-body">
+                    <p>Implemented object detection using YOLOv8 and face detection with Haar Cascades for real-time image analysis applications.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">YOLOv8</span>
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>NLP Applications</h3>
+                </div>
+                <div class="project-body">
+                    <p>Developed research paper recommendation system, spam detection, and text clustering algorithms using advanced NLP techniques.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">NLTK</span>
+                        <span class="tech-tag">Text Mining</span>
+                        <span class="tech-tag">Clustering</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Publications</h2>
-    <ul>
-        <li>
-            <b>Advancing Deep Learning Models for Oral Drugs</b>, Molecular Diversity, 2024 ([Preprint](https://doi.org/10.21203/rs.3.rs-5233119/v1))
-        </li>
-        <li>
-            Study and Identification of Blood Transcriptome Biomarkers for Early Diagnosis of Parkinson’s Disease. (In preparation)
-        </li>
-    </ul>
-</section>
+    <!-- Publications Section -->
+    <section id="publications">
+        <h2 class="section-title">Publications</h2>
+        <div class="publication-card">
+            <h3>Advancing the development of Deep Learning and Machine Learning models for oral drugs through diverse descriptor classes: A focus on Pharmacokinetic Parameters (Vdss and PPB)</h3>
+            <p><strong>Journal:</strong> Molecular Diversity</p>
+            <p><strong>Authors:</strong> Bantu, Rakesh; Phukan, Samiron; Haydar, Simon</p>
+            <p><strong>DOI:</strong> <a href="https://link.springer.com/article/10.1007/s11030-025-11235-1#Bib1" target="_blank">10.21203/rs.3.rs-5233119/v1</a></p>
 
-<section>
-    <h2>Certifications & Workshops</h2>
-    <ul>
-        <li>Advanced Machine Learning & Deep Learning, Udemy (Mar 2023)</li>
-        <li>Bioinformatics: Docking & Molecular Dynamics, Udemy (Jan 2023)</li>
-        <li>National Workshop on NGS Data Analysis, Central University of Punjab (Oct 2023)</li>
-        <li>Scientific poster prize at Aragen Life Sciences, National Science Day (Feb 2024)</li>
-    </ul>
-</section>
+        </div>
+    </section>
 
-<section>
-    <h2>Competencies</h2>
-    <div class="competencies">
-        <ul>
-            <li>Independent, creative thinker and team player</li>
-            <li>Excellent decision making & problem solving</li>
-            <li>Expert deadline & task management</li>
-        </ul>
-    </div>
-</section>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact">
+            <h2 style="color: white; margin-bottom: 1rem;">Let's Connect</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                I'm always interested in collaborating on research projects in bioinformatics, 
+                machine learning, and drug discovery. Feel free to reach out!
+            </p>
+            <div class="contact-links">
+                <a href="mailto:rakeshbantu04@gmail.com" class="contact-link">
+                    📧 Email
+                </a>
+                <a href="https://www.linkedin.com/in/rakesh-bantu/" target="_blank" class="contact-link">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com/BANTURAKESH" target="_blank" class="contact-link">
+                    💻 GitHub
+                </a>
+                <a href="tel:+917013315856" class="contact-link">
+                    📱 Phone
+                </a>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:rakeshbantu04@gmail.com">rakeshbantu04@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/rakesh-bantu" target="_blank">https://www.linkedin.com/in/rakesh-bantu</a></p>
-    <p>GitHub: <a href="https://github.com/BANTURAKESH" target="_blank">https://github.com/BANTURAKESH</a></p>
-</section>
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-<footer>
-    &copy; 2025 Rakesh Bantu | Built by Rakesh Bantu
-</footer>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(0, 0, 0, 0.98)';
+            } else {
+                nav.style.background = 'rgba(0, 0, 0, 0.95)';
+            }
+        });
+
+        // Typing effect for hero title
+        const heroTitle = document.querySelector('.hero h1');
+        const text = heroTitle.textContent;
+        heroTitle.textContent = '';
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                heroTitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+
+        // Start typing effect when page loads
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 500);
+        });
+    </script>
 </body>
 </html>
