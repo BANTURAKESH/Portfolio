@@ -2,762 +2,137 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rakesh Bantu - Bioinformatics Researcher & AI/ML Expert</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Rakesh Bantu – Portfolio</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #0095ff;
-            --secondary: #00d4ff;
-            --dark-bg: #0a0e27;
-            --light-bg: #ffffff;
-            --dark-card: #151932;
-            --light-card: #f8f9fa;
-            --text-dark: #ffffff;
-            --text-light: #333333;
-            --accent: #00ffc8;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--dark-bg);
-            overflow-x: hidden;
-            transition: all 0.3s ease;
-        }
-
-        body.light-mode {
-            background: var(--light-bg);
-            color: var(--text-light);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            background: rgba(10, 14, 39, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        body.light-mode nav {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5)); }
-            to { filter: drop-shadow(0 0 20px rgba(118, 75, 162, 0.8)); }
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: inherit;
-            text-decoration: none;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            position: relative;
-            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-        }
-
-        body.light-mode .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: slideInLeft 1s ease;
-        }
-
-        .hero-text .subtitle {
-            font-size: 1.5rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            animation: slideInLeft 1.2s ease;
-        }
-
-        .hero-text p {
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: slideInLeft 1.4s ease;
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hero-image {
-            position: relative;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .code-window {
-            background: var(--dark-card);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 20px 60px rgba(0, 149, 255, 0.3);
-        }
-
-        body.light-mode .code-window {
-            background: white;
-            box-shadow: 0 20px 60px rgba(118, 75, 162, 0.3);
-        }
-
-        .code-header {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .code-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .code-dot:nth-child(1) { background: #ff5f56; }
-        .code-dot:nth-child(2) { background: #ffbd2e; }
-        .code-dot:nth-child(3) { background: #27c93f; }
-
-        .code-content {
-            font-family: 'Courier New', monospace;
-            color: var(--accent);
-        }
-
-        .code-line {
-            margin: 0.5rem 0;
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        .code-line:nth-child(1) { animation-delay: 0.5s; }
-        .code-line:nth-child(2) { animation-delay: 0.7s; }
-        .code-line:nth-child(3) { animation-delay: 0.9s; }
-        .code-line:nth-child(4) { animation-delay: 1.1s; }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            animation: slideInUp 1.6s ease;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .btn {
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 5rem 0;
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .about-info {
-            background: var(--dark-card);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        body.light-mode .about-info {
-            background: var(--light-card);
-        }
-
-        .info-item {
-            margin: 1rem 0;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .info-item i {
-            color: var(--primary);
-            width: 25px;
-        }
-
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-card {
-            background: var(--dark-card);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        body.light-mode .skill-card {
-            background: var(--light-card);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 149, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .skill-card:hover::before {
-            left: 100%;
-        }
-
-        .skill-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 149, 255, 0.3);
-        }
-
-        .skill-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .skill-tag {
-            background: rgba(0, 149, 255, 0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid var(--primary);
-        }
-
-        /* Experience Timeline */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--gradient);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin: 3rem 0;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 50%;
-            padding-right: 3rem;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 50%;
-            padding-left: 3rem;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 50%;
-            border: 4px solid var(--dark-bg);
-            z-index: 1;
-        }
-
-        body.light-mode .timeline-dot {
-            border-color: var(--light-bg);
-        }
-
-        .timeline-content {
-            background: var(--dark-card);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        body.light-mode .timeline-content {
-            background: var(--light-card);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: var(--dark-card);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        body.light-mode .project-card {
-            background: var(--light-card);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 149, 255, 0.3);
-        }
-
-        .project-header {
-            background: var(--gradient);
-            padding: 1.5rem;
-            position: relative;
-        }
-
-        .project-header h3 {
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-type {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            display: inline-block;
-            color: white;
-        }
-
-        .project-body {
-            padding: 1.5rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tech-badge {
-            background: rgba(0, 149, 255, 0.1);
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            border: 1px solid var(--primary);
-        }
-
-        .project-link {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: var(--primary);
-            transform: translateX(5px);
-        }
-
-        /* Publications */
-        .publication-card {
-            background: var(--dark-card);
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            border-left: 4px solid var(--gradient);
-            transition: all 0.3s ease;
-        }
-
-        body.light-mode .publication-card {
-            background: var(--light-card);
-        }
-
-        .publication-card:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 30px rgba(0, 149, 255, 0.3);
-        }
-
-        .publication-status {
-            display: inline-block;
-            background: var(--gradient);
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-        }
-
-        /* Education Cards */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .education-card {
-            background: var(--dark-card);
-            padding: 2rem;
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        body.light-mode .education-card {
-            background: var(--light-card);
-        }
-
-        .education-card::before {
-            content: '🎓';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 100px;
-            opacity: 0.1;
-        }
-
-        .education-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 149, 255, 0.3);
-        }
-
-        /* Certifications */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .cert-item {
-            background: var(--dark-card);
-            padding: 1.5rem;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        body.light-mode .cert-item {
-            background: var(--light-card);
-        }
-
-        .cert-item:hover {
-            background: rgba(0, 149, 255, 0.1);
-            transform: translateX(10px);
-        }
-
-        .cert-icon {
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
-            margin: 3rem auto;
-        }
-
-        .contact-card {
-            background: var(--dark-card);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        body.light-mode .contact-card {
-            background: var(--light-card);
-        }
-
-        .contact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 149, 255, 0.3);
-        }
-
-        .contact-card i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .contact-card h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-card a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-card a:hover {
-            color: var(--secondary);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-card);
-            padding: 2rem 0;
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        body.light-mode footer {
-            background: var(--light-card);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-links a {
-            color: inherit;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline::before {
+        body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f6f8fa; color:#222;}
+        header {background: #0074D9; color:#fff; padding:2rem 1rem; text-align:center;}
+        section {background:#fff; margin:2rem auto; padding:2rem; border-radius:10px; box-shadow:0 2px 6px #e0e0e0; max-width:800px;}
+        h1, h2 {margin-top:0;}
+        .contacts {margin:1rem 0;}
+        .skills, .competencies, .links {display:flex; flex-wrap:wrap; gap:1.5rem;}
+        ul {margin:0.5rem 0;}
+        footer {text-align:center; color:#888; margin:2rem;}
+        a {color:#0377fc;}
+    </style>
+</head>
+<body>
+<header>
+    <h1>Rakesh Bantu</h1>
+    <p>Researcher | Computational Biology & Bioinformatics | Machine Learning in Life Sciences</p>
+    <div class="contacts">
+        <span>Hyderabad, India | </span>
+        <span>Phone: +91 7013315856 | </span>
+        <span>Email: rakeshbantu04@gmail.com | </span>
+        <a href="https://www.linkedin.com/in/rakesh-bantu" target="_blank">LinkedIn</a> |
+        <a href="https://github.com/BANTURAKESH" target="_blank">GitHub</a>
+    </div>
+    <p>“The value of education is not learning many facts, but the training of the mind to think.”</p>
+</header>
+
+<section>
+    <h2>Profile</h2>
+    <p>Highly motivated and result-oriented Researcher passionate about integrating Computer Science and Computational Biology to advance life sciences and global health. Skilled in multidisciplinary collaborations and committed to transformative research with a focus on drug discovery, genomics, and data-driven biology.</p>
+</section>
+
+<section>
+    <h2>Education</h2>
+    <ul>
+        <li>
+            <b>Masters in Bioinformatics</b>, Central University of Punjab<br>
+            2021–2023 | Cumulative GPA: 6.99 (Good), Grade B
+        </li>
+        <li>
+            <b>Bachelors in Biochemistry</b>, Osmania University, Hyderabad<br>
+            2018–2021 | Cumulative GPA: 8.59
+        </li>
+    </ul>
+</section>
+
+<section>
+    <h2>Skills</h2>
+    <div class="skills">
+        <ul>
+            <li>Programming: R, Python</li>
+            <li>Libraries: Scikit-learn, TensorFlow, Keras, PyTorch</li>
+            <li>Bioinformatics: RNA-seq, NGS data analysis</li>
+            <li>Cheminformatics: RDKit, Pedalpy, Schrodinger Suite</li>
+            <li>Data Science: NumPy, Pandas, Matplotlib, Seaborn</li>
+            <li>Structural Biology: Molecular docking, Modelling (I-TASSER, PyMOL)</li>
+            <li>Network Biology: Cytoscape</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Professional Experience</h2>
+    <ul>
+        <li>
+            <b>Research Associate, Aragen Life Sciences Ltd, Hyderabad</b> (Oct 2023 – Present)<br>
+            Building Machine Learning models for pharmacokinetic parameters, generating small molecules using Deep Learning and Reinforcement Learning, and contributing to Computer Aided Drug Discovery.
+        </li>
+    </ul>
+</section>
+
+<section>
+    <h2>Projects & Research</h2>
+    <ul>
+        <li>
+            <b>Blood Transcriptome Biomarkers for Early Parkinson’s Diagnosis</b><br>
+            Used machine learning algorithms on gene expression profiles to distinguish PD patients (achieved 90% accuracy).
+        </li>
+        <li>
+            <b>Pharmacokinetic Parameter Prediction</b><br>
+            Developed ML models for drug PK parameters (Vd, PPB), leveraging descriptor computation and feature engineering (Pedalpy, RDKit, Schrodinger).
+        </li>
+        <li>
+            <b>Personal ML Projects</b>: Heart disease prediction, breast cancer prediction (UCI datasets), YOLOv8 vision, text clustering, spam mail detection ([GitHub](https://github.com/BANTURAKESH))
+        </li>
+    </ul>
+</section>
+
+<section>
+    <h2>Publications</h2>
+    <ul>
+        <li>
+            <b>Advancing Deep Learning Models for Oral Drugs</b>, Molecular Diversity, 2024 ([Preprint](https://doi.org/10.21203/rs.3.rs-5233119/v1))
+        </li>
+        <li>
+            Study and Identification of Blood Transcriptome Biomarkers for Early Diagnosis of Parkinson’s Disease. (In preparation)
+        </li>
+    </ul>
+</section>
+
+<section>
+    <h2>Certifications & Workshops</h2>
+    <ul>
+        <li>Advanced Machine Learning & Deep Learning, Udemy (Mar 2023)</li>
+        <li>Bioinformatics: Docking & Molecular Dynamics, Udemy (Jan 2023)</li>
+        <li>National Workshop on NGS Data Analysis, Central University of Punjab (Oct 2023)</li>
+        <li>Scientific poster prize at Aragen Life Sciences, National Science Day (Feb 2024)</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Competencies</h2>
+    <div class="competencies">
+        <ul>
+            <li>Independent, creative thinker and team player</li>
+            <li>Excellent decision making & problem solving</li>
+            <li>Expert deadline & task management</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:rakeshbantu04@gmail.com">rakeshbantu04@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/rakesh-bantu" target="_blank">https://www.linkedin.com/in/rakesh-bantu</a></p>
+    <p>GitHub: <a href="https://github.com/BANTURAKESH" target="_blank">https://github.com/BANTURAKESH</a></p>
+</section>
+
+<footer>
+    &copy; 2025 Rakesh Bantu | Built by Rakesh Bantu
+</footer>
+</body>
+</html>
