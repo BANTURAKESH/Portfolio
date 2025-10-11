@@ -4,157 +4,409 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Rakesh Bantu — Bioinformatics & ML Researcher</title>
-  <meta name="description" content="Rakesh Bantu — PhD scholar in Biomedical Engineering. Computational biology, single-cell RNA-seq, ML models for drug discovery and disease prediction."/>
+  <meta name="description" content="Rakesh Bantu — PhD scholar in Biomedical Engineering at Syracuse University. Computational biology, single-cell RNA-seq, ML models for drug discovery and disease prediction."/>
+  
   <!-- OpenGraph -->
   <meta property="og:title" content="Rakesh Bantu — Bioinformatics & ML Researcher"/>
   <meta property="og:description" content="PhD scholar exploring AI for computational biology. Projects: scRNA-seq, PK prediction, disease models."/>
   <meta property="og:image" content="https://raw.githubusercontent.com/BANTURAKESH/Portfolio/main/Profile.png" />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#F4F4F4" />
+  <meta property="og:url" content="https://banturakesh.github.io/portfolio/" />
+  <meta name="theme-color" content="#4A90E2" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rakesh Bantu — Bioinformatics & ML Researcher">
+  <meta name="twitter:description" content="PhD scholar exploring AI for computational biology">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/BANTURAKESH/Portfolio/main/Profile.png">
 
   <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     /* ---- Palette (requested) ---- */
     :root{
-      --bg: #F4F4F4;        /* light gray */
-      --surface: #FFFFFF;   /* white panels */
-      --text: #2E2E2E;      /* charcoal */
-      --muted: #6B7280;     /* gray for secondary text */
-      --accent: #4A90E2;    /* muted blue */
+      --bg: #F4F4F4;
+      --surface: #FFFFFF;
+      --text: #2E2E2E;
+      --muted: #6B7280;
+      --accent: #4A90E2;
+      --accent-hover: #357ABD;
+      --success: #10B981;
       --radius: 12px;
       --maxw: 1100px;
-      --shadow: 0 6px 18px rgba(46,46,46,0.08);
-      --glass: rgba(74,144,226,0.08);
+      --shadow: 0 4px 14px rgba(46,46,46,0.06);
+      --shadow-lg: 0 10px 30px rgba(46,46,46,0.12);
+      --glass: rgba(255,255,255,0.8);
     }
 
     /* ---- Base ---- */
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:"Roboto",system-ui,-apple-system,Segoe UI,Inter,Arial;
+      font-family:"Roboto",system-ui,-apple-system,sans-serif;
       background:var(--bg);
       color:var(--text);
       -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      -webkit-tap-highlight-color:transparent;
+      line-height:1.6;
     }
-    a{color:var(--accent);text-decoration:none}
-    a:focus{outline:3px solid rgba(74,144,226,0.18);outline-offset:3px}
+    
+    h1,h2,h3,h4{font-family:"Inter",sans-serif;font-weight:700;line-height:1.2}
+    a{color:var(--accent);text-decoration:none;transition:color 0.2s}
+    a:hover{color:var(--accent-hover)}
+    a:focus-visible{outline:3px solid rgba(74,144,226,0.25);outline-offset:3px;border-radius:4px}
     img{max-width:100%;height:auto;display:block}
-
+    
     /* Skip link */
     .skip-link{
-      position:absolute;left:8px;top:8px;
-      background:#fff;color:var(--text);padding:.5rem .75rem;border-radius:6px;
-      transform:translateY(-120%);transition:transform .18s ease;
-      z-index:9999;
+      position:absolute;left:-9999px;top:8px;
+      background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:6px;
+      z-index:9999;font-weight:600;
     }
-    .skip-link:focus{transform:translateY(0)}
+    .skip-link:focus{left:8px}
 
     /* Container */
-    .container{max-width:var(--maxw);margin:0 auto;padding:1.5rem}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 1.5rem}
 
     /* NAV */
-    nav[role="navigation"]{
-      position:sticky;top:0;z-index:60;
-      background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.66));
-      backdrop-filter: blur(6px);
-      border-bottom:1px solid rgba(46,46,46,0.04)
+    nav{
+      position:sticky;top:0;z-index:100;
+      background:var(--glass);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(46,46,46,0.08);
+      transition:transform 0.3s;
     }
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:var(--maxw);margin:0 auto;padding:.75rem 1rem}
-    .brand{display:flex;align-items:center;gap:.75rem}
-    .brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);box-shadow:var(--shadow)}
-    .brand .name{font-weight:700;font-family:"Inter";color:var(--text)}
-    .nav-links{display:flex;gap:1rem;align-items:center}
-    .nav-links a{padding:.5rem .6rem;border-radius:8px;color:var(--text);font-weight:500}
-    .nav-links a[aria-current="true"]{background:var(--glass);color:var(--accent)}
-    .hamburger{display:none;border:1px solid rgba(46,46,46,.04);background:var(--surface);padding:.5rem;border-radius:8px}
+    .nav-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      max-width:var(--maxw);margin:0 auto;padding:0.75rem 1.5rem;
+    }
+    .brand{display:flex;align-items:center;gap:0.75rem}
+    .brand img{
+      width:40px;height:40px;border-radius:50%;
+      object-fit:cover;border:2px solid var(--accent);
+    }
+    .brand-text{display:flex;flex-direction:column}
+    .brand-name{font-weight:700;font-family:"Inter";color:var(--text);font-size:1rem}
+    .brand-tagline{font-size:0.75rem;color:var(--muted)}
+    
+    .nav-links{display:flex;gap:0.5rem;align-items:center}
+    .nav-links a{
+      padding:0.5rem 0.75rem;border-radius:8px;color:var(--text);
+      font-weight:500;font-size:0.95rem;transition:all 0.2s;
+    }
+    .nav-links a:hover{background:rgba(74,144,226,0.08);color:var(--accent)}
+    .nav-links a.active{background:rgba(74,144,226,0.12);color:var(--accent)}
+    
+    .hamburger{
+      display:none;border:1px solid rgba(46,46,46,0.12);
+      background:var(--surface);padding:0.5rem;border-radius:8px;
+      cursor:pointer;font-size:1.25rem;
+    }
+    
+    #navmenu{
+      display:none;background:var(--glass);
+      backdrop-filter:blur(10px);padding:1rem;
+      border-top:1px solid rgba(46,46,46,0.08);
+    }
+    #navmenu a{
+      display:block;padding:0.5rem 1rem;color:var(--text);
+      border-radius:8px;transition:all 0.2s;
+    }
+    #navmenu a:hover{background:rgba(74,144,226,0.08)}
 
     /* HERO */
-    .hero{padding:4rem 1rem 3rem;background:linear-gradient(0deg, rgba(74,144,226,0.04), transparent);overflow:visible}
-    .hero-inner{display:grid;grid-template-columns:260px 1fr;gap:2rem;align-items:center;max-width:var(--maxw);margin:0 auto}
-    .profile-card{background:var(--surface);padding:1.5rem;border-radius:16px;box-shadow:var(--shadow);text-align:center}
-    .profile-photo{width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid var(--surface);box-shadow:0 8px 20px rgba(74,144,226,.08)}
-    .hero-headline{font-family:"Inter";font-weight:800;font-size:2rem;margin-top:1rem;color:var(--text)}
-    .hero-sub{color:var(--muted);margin-top:.25rem;font-weight:600}
-    .hero-bio{margin-top:1rem;color:var(--text);max-width:50ch}
-    .hero-ctas{display:flex;gap:0.75rem;margin-top:1.25rem;flex-wrap:wrap}
-    .btn{padding:.6rem 1rem;border-radius:999px;font-weight:700;border:0;cursor:pointer}
-    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 20px rgba(74,144,226,.12)}
-    .btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(46,46,46,.06)}
+    .hero{
+      padding:5rem 0 3rem;
+      background:linear-gradient(135deg,rgba(74,144,226,0.03) 0%,transparent 50%);
+    }
+    .hero-inner{
+      display:grid;grid-template-columns:320px 1fr;gap:3rem;
+      align-items:center;max-width:var(--maxw);margin:0 auto;padding:0 1.5rem;
+    }
+    .profile-card{
+      background:var(--surface);padding:2rem;border-radius:16px;
+      box-shadow:var(--shadow-lg);text-align:center;
+      border:1px solid rgba(74,144,226,0.08);
+    }
+    .profile-photo{
+      width:180px;height:180px;border-radius:50%;object-fit:cover;
+      border:4px solid var(--surface);box-shadow:0 0 0 1px rgba(74,144,226,0.2);
+      margin:0 auto;
+    }
+    .hero-name{
+      font-family:"Inter";font-weight:800;font-size:1.75rem;
+      margin:1rem 0 0.25rem;color:var(--text);
+    }
+    .hero-title{color:var(--muted);font-size:1rem;font-weight:500}
+    .status-badge{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      background:rgba(16,185,129,0.1);color:var(--success);
+      padding:0.375rem 0.75rem;border-radius:999px;
+      font-size:0.875rem;font-weight:600;margin-top:1rem;
+    }
+    .status-badge::before{
+      content:'';width:8px;height:8px;border-radius:50%;
+      background:currentColor;animation:pulse 2s infinite;
+    }
+    
+    @keyframes pulse{
+      0%,100%{opacity:1}
+      50%{opacity:0.5}
+    }
+    
+    .hero-content h1{
+      font-size:2.5rem;margin:0 0 1rem;
+      background:linear-gradient(135deg,var(--text),var(--accent));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .hero-bio{
+      font-size:1.125rem;color:var(--text);margin-bottom:1.5rem;
+      line-height:1.7;max-width:700px;
+    }
+    .hero-ctas{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.5rem}
+    .btn{
+      padding:0.625rem 1.25rem;border-radius:999px;font-weight:600;
+      border:0;cursor:pointer;transition:all 0.2s;
+      display:inline-flex;align-items:center;gap:0.5rem;
+    }
+    .btn-primary{
+      background:var(--accent);color:#fff;
+      box-shadow:0 4px 14px rgba(74,144,226,0.25);
+    }
+    .btn-primary:hover{
+      background:var(--accent-hover);transform:translateY(-2px);
+      box-shadow:0 6px 20px rgba(74,144,226,0.35);
+    }
+    .btn-secondary{
+      background:var(--surface);color:var(--text);
+      border:1px solid rgba(46,46,46,0.12);
+    }
+    .btn-secondary:hover{
+      border-color:var(--accent);color:var(--accent);
+      transform:translateY(-2px);
+    }
+    
+    .hero-meta{
+      color:var(--muted);font-size:0.95rem;
+      padding:1rem;background:var(--surface);
+      border-radius:12px;border:1px solid rgba(46,46,46,0.08);
+    }
+    .hero-meta strong{color:var(--text)}
 
     /* Sections */
-    section{padding:3.5rem 1rem}
-    .section-title{font-family:"Inter";font-weight:700;font-size:1.5rem;margin-bottom:1.25rem;color:var(--text)}
-    .card{background:var(--surface);padding:1rem;border-radius:12px;box-shadow:var(--shadow);border:1px solid rgba(46,46,46,0.04)}
+    section{padding:4rem 0}
+    .section-title{
+      font-size:1.75rem;margin:0 0 2rem;color:var(--text);
+      display:flex;align-items:center;gap:0.75rem;
+    }
+    .section-title::after{
+      content:'';height:2px;flex:1;
+      background:linear-gradient(90deg,rgba(74,144,226,0.2),transparent);
+    }
 
-    /* Skills grid */
-    .grid{display:grid;gap:1rem}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-    .skill-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+    /* Cards */
+    .card{
+      background:var(--surface);padding:1.5rem;border-radius:var(--radius);
+      box-shadow:var(--shadow);border:1px solid rgba(46,46,46,0.04);
+      transition:all 0.3s;
+    }
+    .card:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow-lg);
+      border-color:rgba(74,144,226,0.2);
+    }
+
+    /* About */
+    .about-grid{
+      display:grid;grid-template-columns:2fr 1fr;gap:2rem;
+      align-items:start;
+    }
+    .about-links{
+      list-style:none;padding:0;margin:1rem 0;
+      display:flex;flex-direction:column;gap:0.5rem;
+    }
+    .about-links li{display:flex;align-items:center;gap:0.5rem}
+    .about-links a{font-weight:500}
+    
+    .quick-facts{
+      background:rgba(74,144,226,0.03);
+      border:1px solid rgba(74,144,226,0.1);
+    }
+    .fact-chips{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem}
+    .chip{
+      background:var(--surface);padding:0.375rem 0.875rem;
+      border-radius:999px;font-size:0.875rem;
+      border:1px solid rgba(46,46,46,0.08);
+      color:var(--text);font-weight:500;
+    }
+
+    /* Skills Grid */
+    .skills-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.5rem;
+    }
+    .skill-card h3{
+      margin:0 0 1rem;font-size:1.125rem;
+      display:flex;align-items:center;gap:0.5rem;
+    }
+    .skill-card h3::before{
+      content:'';width:4px;height:20px;
+      background:var(--accent);border-radius:2px;
+    }
+    .skill-tags{display:flex;flex-wrap:wrap;gap:0.375rem}
+    .skill-tag{
+      background:rgba(74,144,226,0.08);color:var(--accent);
+      padding:0.25rem 0.625rem;border-radius:6px;
+      font-size:0.825rem;font-weight:600;
+    }
 
     /* Projects */
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-    .project-card{display:flex;flex-direction:column;gap:.5rem}
-    .project-meta{display:flex;gap:.5rem;flex-wrap:wrap;font-size:.9rem;color:var(--muted)}
+    .projects-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:1.5rem;
+    }
+    .project-card{position:relative;overflow:hidden}
+    .project-card::before{
+      content:'';position:absolute;top:0;left:0;right:0;
+      height:4px;background:var(--accent);
+      transform:scaleX(0);transform-origin:left;
+      transition:transform 0.3s;
+    }
+    .project-card:hover::before{transform:scaleX(1)}
+    .project-card h3{margin:0 0 0.5rem;color:var(--text)}
+    .project-description{color:var(--muted);margin:0.5rem 0 1rem;font-size:0.95rem}
+    .project-meta{
+      display:flex;gap:0.5rem;flex-wrap:wrap;
+      font-size:0.875rem;color:var(--muted);
+      padding-bottom:1rem;border-bottom:1px solid rgba(46,46,46,0.08);
+    }
+    .project-actions{
+      display:flex;gap:0.5rem;margin-top:1rem;
+    }
+    .project-actions .btn{font-size:0.875rem;padding:0.375rem 0.875rem}
 
     /* Timeline */
-    .timeline{display:flex;flex-direction:column;gap:1rem}
-    .timeline-item{display:flex;gap:1rem;align-items:flex-start}
-    .timeline-dot{width:12px;height:12px;border-radius:50%;background:var(--accent);margin-top:.6rem}
+    .timeline{position:relative;padding-left:2rem}
+    .timeline::before{
+      content:'';position:absolute;left:6px;top:0;bottom:0;
+      width:2px;background:rgba(74,144,226,0.2);
+    }
+    .timeline-item{position:relative;padding-bottom:2rem}
+    .timeline-dot{
+      position:absolute;left:-26px;top:6px;
+      width:12px;height:12px;border-radius:50%;
+      background:var(--accent);border:2px solid var(--surface);
+      box-shadow:0 0 0 4px rgba(74,144,226,0.1);
+    }
+    .timeline-date{
+      display:inline-block;background:rgba(74,144,226,0.08);
+      color:var(--accent);padding:0.25rem 0.625rem;
+      border-radius:6px;font-size:0.875rem;font-weight:600;
+      margin-bottom:0.5rem;
+    }
+    .timeline-content h3{margin:0.5rem 0 0.25rem}
+    .timeline-content .company{color:var(--muted);font-size:0.95rem}
+    .timeline-content p{margin:0.5rem 0;color:var(--text)}
 
-    /* Footer / Contact */
-    .contact-cta{display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap}
-    .footer{padding:2rem 1rem;background:transparent;color:var(--muted);text-align:center}
+    /* Publications */
+    .publication-card{margin-bottom:1.5rem}
+    .publication-card h3{margin:0 0 0.75rem;line-height:1.4}
+    .publication-meta{
+      display:flex;flex-wrap:wrap;gap:1rem;
+      margin:0.75rem 0;font-size:0.95rem;color:var(--muted);
+    }
+    .publication-meta strong{color:var(--text)}
+    .publication-link{
+      display:inline-flex;align-items:center;gap:0.25rem;
+      font-weight:600;
+    }
+
+    /* Contact */
+    .contact-content{
+      text-align:center;padding:2rem;
+      background:linear-gradient(135deg,var(--surface),rgba(74,144,226,0.03));
+    }
+    .contact-links{
+      display:flex;gap:1rem;justify-content:center;
+      flex-wrap:wrap;margin-top:1.5rem;
+    }
+    .social-link{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      padding:0.75rem 1.25rem;background:var(--surface);
+      border-radius:12px;border:1px solid rgba(46,46,46,0.08);
+      color:var(--text);font-weight:500;
+      transition:all 0.2s;
+    }
+    .social-link:hover{
+      border-color:var(--accent);color:var(--accent);
+      transform:translateY(-2px);
+      box-shadow:var(--shadow);
+    }
+
+    /* Footer */
+    footer{
+      padding:2rem 0;background:var(--text);
+      color:var(--surface);text-align:center;
+    }
+    footer a{color:var(--surface);opacity:0.8}
+    footer a:hover{opacity:1}
 
     /* Responsive */
     @media (max-width:880px){
-      .hero-inner{grid-template-columns:1fr; text-align:left}
-      .profile-card{display:flex;gap:1rem;align-items:center}
-      .brand img{width:40px;height:40px}
+      .hero-inner{grid-template-columns:1fr;text-align:center}
+      .profile-card{max-width:400px;margin:0 auto}
+      .about-grid{grid-template-columns:1fr}
       .nav-links{display:none}
-      .hamburger{display:inline-flex}
-      .grid.cols-3{grid-template-columns:repeat(2,1fr)}
+      .hamburger{display:block}
     }
-    @media (max-width:520px){
-      .grid.cols-3{grid-template-columns:1fr}
-      .hero-headline{font-size:1.35rem}
-      .profile-photo{width:96px;height:96px}
+    
+    @media (max-width:640px){
+      .hero-content h1{font-size:1.75rem}
+      .profile-photo{width:120px;height:120px}
+      .hero-ctas{justify-content:center;width:100%}
+      .btn{width:100%;justify-content:center}
+      .skills-grid{grid-template-columns:1fr}
+      .projects-grid{grid-template-columns:1fr}
     }
 
-    /* Focus visible */
-    :focus{outline:none}
-    :focus-visible{outline:3px solid rgba(74,144,226,.18);outline-offset:3px;border-radius:8px}
+    /* Print */
+    @media print{
+      nav,.hero-ctas,.skip-link,footer{display:none}
+      body{background:white}
+      .card{box-shadow:none;border:1px solid #ddd}
+    }
   </style>
 </head>
 <body>
-  <!-- Skip link -->
-  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Skip link for accessibility -->
+  <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- NAV -->
+  <!-- Navigation -->
   <nav role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
-      <div class="brand" aria-hidden="false">
-        <img src="https://raw.githubusercontent.com/BANTURAKESH/Portfolio/main/Profile.png" alt="Rakesh Bantu — profile photo" width="44" height="44" loading="lazy">
-        <div>
-          <div class="name">Rakesh Bantu</div>
-          <div style="font-size:.8rem;color:var(--muted)">Bioinformatics • ML • PhD</div>
+      <div class="brand">
+        <img src="https://raw.githubusercontent.com/BANTURAKESH/Portfolio/main/Profile.png" 
+             alt="Rakesh Bantu" width="40" height="40">
+        <div class="brand-text">
+          <div class="brand-name">Rakesh Bantu</div>
+          <div class="brand-tagline">Bioinformatics • ML • PhD</div>
         </div>
       </div>
 
       <div class="nav-links" id="nav-links">
-        <a href="#home" data-target="home">Home</a>
-        <a href="#about" data-target="about">About</a>
-        <a href="#skills" data-target="skills">Skills</a>
-        <a href="#projects" data-target="projects">Projects</a>
-        <a href="#publications" data-target="publications">Publications</a>
-        <a href="#contact" data-target="contact">Contact</a>
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
       </div>
 
       <button class="hamburger" id="hambtn" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle menu">
@@ -162,206 +414,412 @@
       </button>
     </div>
 
-    <!-- Mobile menu (hidden by default) -->
-    <div id="navmenu" style="display:none;padding:1rem;border-top:1px solid rgba(0,0,0,.04);background:transparent">
-      <div style="display:flex;flex-direction:column;gap:.5rem;max-width:var(--maxw);margin:0 auto;padding:0 1rem">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#publications">Publications</a>
-        <a href="#contact">Contact</a>
-      </div>
+    <!-- Mobile menu -->
+    <div id="navmenu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <main id="main" role="main">
+  <main id="main">
     <!-- HERO -->
-    <header id="home" class="hero" aria-labelledby="hero-title">
-      <div class="hero-inner container">
+    <header id="home" class="hero">
+      <div class="hero-inner">
         <div class="profile-card">
-          <img class="profile-photo" src="https://raw.githubusercontent.com/BANTURAKESH/Portfolio/main/Profile.png"
-               alt="Rakesh Bantu — profile" width="160" height="160" loading="lazy">
-          <div style="margin-top:0.85rem">
-            <div class="hero-headline" id="hero-title">Rakesh Bantu</div>
-            <div class="hero-sub">PhD Scholar — Computational Biology & Machine Learning</div>
-          </div>
+          <img class="profile-photo" 
+               src="https://raw.githubusercontent.com/BANTURAKESH/Portfolio/main/Profile.png"
+               alt="Rakesh Bantu" 
+               width="180" 
+               height="180">
+          <h2 class="hero-name">Rakesh Bantu</h2>
+          <p class="hero-title">PhD Scholar in Biomedical Engineering</p>
+          <div class="status-badge">Available for Research Collaborations</div>
         </div>
 
-        <div>
-          <p class="hero-bio card" style="padding:1.25rem">
-            I bridge computational methods and biology — building ML models for single-cell analysis, pharmacokinetic parameter prediction and disease classification. Currently a PhD scholar at Syracuse University. Available for research collaborations.
+        <div class="hero-content">
+          <h1>Advancing Healthcare Through AI & Computational Biology</h1>
+          <p class="hero-bio">
+            I bridge computational methods and biology — building ML models for single-cell RNA sequencing analysis, 
+            pharmacokinetic parameter prediction, and disease classification. Currently pursuing my PhD at Syracuse University 
+            with 2+ years of industry experience at Aragen Life Sciences.
           </p>
-
-          <div class="hero-ctas" style="margin-top:0.8rem">
-            <a class="btn btn-primary" href="#contact">Get in touch</a>
-            <a class="btn btn-ghost" href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">View GitHub</a>
-            <a class="btn btn-ghost" href="/Bantu_Rakesh_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+          
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="mailto:rakeshbantu04@gmail.com">
+              <span>📧</span> Get in Touch
+            </a>
+            <a class="btn btn-secondary" href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">
+              <span>💻</span> GitHub
+            </a>
+            <a class="btn btn-secondary" href="assets/docs/resume.pdf" download>
+              <span>📄</span> Download CV
+            </a>
           </div>
 
-          <div style="margin-top:1rem;color:var(--muted);font-size:.95rem">
-            <strong>Open to:</strong> Research collaborations • Internships • Peer review
+          <div class="hero-meta">
+            <strong>Research Interests:</strong> scRNA-seq • Drug Discovery • Deep Learning • Biomarker Discovery<br>
+            <strong>Open to:</strong> Research Collaborations • Internships • Peer Review • Consulting
           </div>
         </div>
       </div>
     </header>
 
     <!-- ABOUT -->
-    <section id="about" class="container" aria-labelledby="about-title">
-      <h2 id="about-title" class="section-title">About</h2>
-      <div class="card" style="display:flex;gap:1rem;align-items:flex-start;flex-wrap:wrap">
-        <div style="flex:1;min-width:240px;">
-          <p style="margin-top:0">PhD student in Biomedical Engineering at Syracuse University. My research applies machine learning to single-cell genomics and drug discovery. I focus on reproducible pipelines, interpretable models, and translating computational methods into biological insight.</p>
-          <ul style="margin-top:0.5rem;color:var(--muted)">
-            <li>Location: Syracuse, NY</li>
-            <li>Email: <a href="mailto:rakeshbantu04@gmail.com">rakeshbantu04@gmail.com</a></li>
-            <li>ORCID / Google Scholar / LinkedIn links — add here</li>
+    <section id="about" class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="card">
+          <p style="margin-top:0;font-size:1.05rem;line-height:1.7">
+            PhD student in Biomedical Engineering at Syracuse University. My research applies machine learning to 
+            single-cell genomics and drug discovery. I focus on developing reproducible computational pipelines, 
+            interpretable models, and translating computational methods into biological insights.
+          </p>
+          <p>
+            Previously, I worked as a Research Associate at Aragen Life Sciences, building ML models for 
+            pharmacokinetic parameters and contributing to computer-aided drug design projects. I hold a 
+            Master's in Bioinformatics from Central University of Punjab, where my thesis focused on 
+            identifying blood transcriptome biomarkers for early Parkinson's disease diagnosis.
+          </p>
+          <ul class="about-links">
+            <li>📍 Syracuse, New York, USA</li>
+            <li>✉️ <a href="mailto:rakeshbantu04@gmail.com">rakeshbantu04@gmail.com</a></li>
+            <li>🔗 <a href="https://www.linkedin.com/in/rakesh-bantu/" target="_blank" rel="noopener">LinkedIn Profile</a></li>
+            <li>🆔 <a href="https://orcid.org/0009-0005-5178-3468" target="_blank" rel="noopener">ORCID: 0009-0005-5178-3468</a></li>
+            <li>📚 <a href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">GitHub: @BANTURAKESH</a></li>
           </ul>
         </div>
-        <div style="min-width:220px">
-          <strong style="display:block;margin-bottom:.5rem">Quick facts</strong>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap">
-            <div class="card" style="padding:.6rem;border-radius:10px">scRNA-seq • Seurat</div>
-            <div class="card" style="padding:.6rem;border-radius:10px">Python • R</div>
-            <div class="card" style="padding:.6rem;border-radius:10px">Deep Learning • RDKit</div>
+        
+        <div class="card quick-facts">
+          <h3 style="margin:0 0 0.75rem;font-size:1rem">Quick Facts</h3>
+          <div class="fact-chips">
+            <span class="chip">5+ Years Research</span>
+            <span class="chip">10+ ML Projects</span>
+            <span class="chip">1 Publication</span>
+            <span class="chip">90% Model Accuracy</span>
           </div>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)">
+            Specializing in scRNA-seq analysis with Seurat & Scanpy, 
+            deep learning with PyTorch & TensorFlow, and drug discovery with RDKit.
+          </p>
         </div>
       </div>
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="container" aria-labelledby="skills-title">
-      <h2 id="skills-title" class="section-title">Technical Expertise</h2>
-
-      <div class="grid cols-3">
-        <div class="card">
-          <h3 style="margin:0 0 .5rem;font-family:Inter">Machine Learning & AI</h3>
+    <section id="skills" class="container">
+      <h2 class="section-title">Technical Expertise</h2>
+      <div class="skills-grid">
+        <div class="card skill-card">
+          <h3>Machine Learning & AI</h3>
           <div class="skill-tags">
-            <span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">scikit-learn</span>
-            <span class="chip">Deep Learning</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">Deep Learning</span>
+            <span class="skill-tag">NLP</span>
+            <span class="skill-tag">Computer Vision</span>
+            <span class="skill-tag">Feature Engineering</span>
           </div>
         </div>
 
-        <div class="card">
-          <h3 style="margin:0 0 .5rem;font-family:Inter">Bioinformatics</h3>
+        <div class="card skill-card">
+          <h3>Bioinformatics & Genomics</h3>
           <div class="skill-tags">
-            <span class="chip">Seurat</span><span class="chip">Scanpy</span><span class="chip">NGS</span>
-            <span class="chip">Bioconductor</span>
+            <span class="skill-tag">scRNA-seq</span>
+            <span class="skill-tag">Seurat</span>
+            <span class="skill-tag">Scanpy</span>
+            <span class="skill-tag">10X Genomics</span>
+            <span class="skill-tag">SCTransform</span>
+            <span class="skill-tag">Bioconductor</span>
+            <span class="skill-tag">Galaxy.eu</span>
+            <span class="skill-tag">NGS Analysis</span>
           </div>
         </div>
 
-        <div class="card">
-          <h3 style="margin:0 0 .5rem;font-family:Inter">Drug Discovery & Chemoinformatics</h3>
+        <div class="card skill-card">
+          <h3>Drug Discovery</h3>
           <div class="skill-tags">
-            <span class="chip">RDKit</span><span class="chip">AutoDock</span><span class="chip">QikProp</span>
+            <span class="skill-tag">RDKit</span>
+            <span class="skill-tag">Molecular Docking</span>
+            <span class="skill-tag">AutoDock</span>
+            <span class="skill-tag">Schrodinger</span>
+            <span class="skill-tag">SBDD</span>
+            <span class="skill-tag">Virtual Screening</span>
+            <span class="skill-tag">QikProp</span>
+          </div>
+        </div>
+
+        <div class="card skill-card">
+          <h3>Programming & Tools</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Git/GitHub</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">BioPython</span>
+            <span class="skill-tag">Jupyter</span>
+            <span class="skill-tag">Docker</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="container" aria-labelledby="projects-title">
-      <h2 id="projects-title" class="section-title">Selected Projects</h2>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">Aug 2025 - Present</span>
+            <h3>Research Assistant</h3>
+            <div class="company">Syracuse University • Syracuse, NY</div>
+            <p>
+              Conducting research in computational biology and biomedical engineering. 
+              Developing novel ML approaches for single-cell data analysis and cell type identification.
+            </p>
+          </div>
+        </div>
 
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">Oct 2023 - Jun 2025</span>
+            <h3>Research Associate</h3>
+            <div class="company">Aragen Life Sciences Ltd • Hyderabad, India</div>
+            <p>
+              Built ML models for pharmacokinetic parameters (Vdss, PPB) prediction. 
+              Implemented deep learning solutions for small molecule generation using reinforcement learning.
+              Contributed to CADD research projects.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">Jan 2023 - Jul 2023</span>
+            <h3>Master's Thesis Research</h3>
+            <div class="company">Central University of Punjab • India</div>
+            <p>
+              Identified blood transcriptome biomarkers for early Parkinson's Disease diagnosis. 
+              Achieved 90% accuracy with MLP algorithm on gene expression data from GEO database.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="container">
+      <h2 class="section-title">Selected Projects</h2>
       <div class="projects-grid">
-        <!-- Project 1 -->
-        <article class="project-card card" aria-labelledby="p1">
-          <h3 id="p1" style="margin:0">Pharmacokinetic Parameters Prediction</h3>
-          <p style="margin:.5rem 0;color:var(--muted)">Deep models predicting Vdss & PPB using RDKit descriptors and QikProp.</p>
+        
+        <article class="card project-card">
+          <h3>scRNA-seq Pipeline Development</h3>
+          <p class="project-description">
+            Comprehensive single-cell analysis pipeline processing 10X Genomics data. Implements SCTransform 
+            normalization, Leiden clustering, and trajectory inference for 50,000+ cells.
+          </p>
           <div class="project-meta">
-            <span>Deep Learning</span>•<span>RDKit</span>•<span>Published</span>•<span>2025</span>
+            <span>🧬 Bioinformatics</span>
+            <span>• R/Python</span>
+            <span>• Seurat v5</span>
+            <span>• 2025</span>
           </div>
-          <div style="margin-top:.75rem">
-            <a class="btn btn-ghost" href="#" role="button">Read paper</a>
-            <a class="btn btn-ghost" href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">Code</a>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card card" aria-labelledby="p2">
-          <h3 id="p2" style="margin:0">Blood Transcriptome Biomarkers — Parkinson's</h3>
-          <p style="margin:.5rem 0;color:var(--muted)">ML pipeline returned MLP accuracy 90% for early PD detection (cross-validated).</p>
-          <div style="margin-top:.75rem">
-            <a class="btn btn-ghost" href="#" role="button">Read summary</a>
-            <a class="btn btn-ghost" href="#" role="button">Dataset</a>
+          <div class="project-actions">
+            <a class="btn btn-secondary" href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">View Code</a>
+            <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">Documentation</a>
           </div>
         </article>
 
-        <!-- Add more projects similarly -->
+        <article class="card project-card">
+          <h3>Pharmacokinetic Parameters Prediction</h3>
+          <p class="project-description">
+            Deep learning models predicting Vdss and PPB parameters using molecular descriptors from RDKit 
+            and Schrodinger QikProp. Achieved R² of 0.85 on external validation with 10,000+ compounds.
+          </p>
+          <div class="project-meta">
+            <span>💊 Drug Discovery</span>
+            <span>• Deep Learning</span>
+            <span>• Published</span>
+            <span>• 2025</span>
+          </div>
+          <div class="project-actions">
+            <a class="btn btn-secondary" href="https://link.springer.com/article/10.1007/s11030-025-11235-1" target="_blank" rel="noopener">Read Paper</a>
+            <a class="btn btn-secondary" href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">Code</a>
+          </div>
+        </article>
+
+        <article class="card project-card">
+          <h3>Parkinson's Disease Biomarker Discovery</h3>
+          <p class="project-description">
+            Identified blood-based biomarkers for early PD diagnosis using machine learning on transcriptome data. 
+            MLP model achieved 90% accuracy differentiating patients from healthy controls.
+          </p>
+          <div class="project-meta">
+            <span>🧠 ML/Healthcare</span>
+            <span>• Python</span>
+            <span>• Master's Thesis</span>
+            <span>• 2023</span>
+          </div>
+          <div class="project-actions">
+            <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">Abstract</a>
+            <a class="btn btn-secondary" href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">Repository</a>
+          </div>
+        </article>
+
       </div>
     </section>
 
-    <!-- Publications -->
-    <section id="publications" class="container" aria-labelledby="pub-title">
-      <h2 id="pub-title" class="section-title">Publications</h2>
-
-      <article class="card" style="margin-bottom:1rem">
-        <h3 style="margin:0">Advancing deep learning models for oral drug PK parameters</h3>
-        <p style="margin:.5rem 0;color:var(--muted)"><strong>Journal:</strong> Molecular Diversity • <strong>2025</strong></p>
-        <p><a href="https://link.springer.com/article/10.1007/s11030-025-11235-1" target="_blank" rel="noopener">DOI &mdash; Read</a></p>
+    <!-- PUBLICATIONS -->
+    <section id="publications" class="container">
+      <h2 class="section-title">Publications</h2>
+      
+      <article class="card publication-card">
+        <h3>Advancing the development of Deep Learning and Machine Learning models for oral drugs through diverse descriptor classes: A focus on Pharmacokinetic Parameters (Vdss and PPB)</h3>
+        <div class="publication-meta">
+          <span><strong>Journal:</strong> Molecular Diversity</span>
+          <span><strong>Publisher:</strong> Springer Nature</span>
+          <span><strong>Year:</strong> 2025</span>
+        </div>
+        <p style="margin:1rem 0 0;color:var(--muted)">
+          <strong>Authors:</strong> Bantu, Rakesh; Phukan, Samiron; Haydar, Simon
+        </p>
+        <a class="publication-link" href="https://link.springer.com/article/10.1007/s11030-025-11235-1" target="_blank" rel="noopener">
+          Read Full Paper →
+        </a>
       </article>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="container" aria-labelledby="contact-title">
-      <h2 id="contact-title" class="section-title">Let's Connect</h2>
-      <div class="card contact-cta" role="region" aria-label="Contact options">
-        <a class="btn btn-primary" href="mailto:rakeshbantu04@gmail.com">Email — rakeshbantu04@gmail.com</a>
-        <a class="btn btn-ghost" href="https://www.linkedin.com/in/rakesh-bantu/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn btn-ghost" href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">GitHub</a>
+    <!-- CONTACT -->
+    <section id="contact" class="container">
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="card contact-content">
+        <h3 style="margin:0 0 0.5rem">Open to Opportunities</h3>
+        <p style="margin:0 auto 1.5rem;max-width:600px;color:var(--muted)">
+          I'm actively seeking research collaborations, internship opportunities, and consulting projects 
+          in bioinformatics, machine learning, and drug discovery.
+        </p>
+        <div class="contact-links">
+          <a class="social-link" href="mailto:rakeshbantu04@gmail.com">
+            <span>📧</span> Email
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/in/rakesh-bantu/" target="_blank" rel="noopener">
+            <span>💼</span> LinkedIn
+          </a>
+          <a class="social-link" href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">
+            <span>💻</span> GitHub
+          </a>
+          <a class="social-link" href="https://orcid.org/0009-0005-5178-3468" target="_blank" rel="noopener">
+            <span>🆔</span> ORCID
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <footer>
     <div class="container">
-      © <span id="year"></span> Rakesh Bantu — Built with HTML & CSS • Hosted on GitHub Pages
+      <p>© <span id="year"></span> Rakesh Bantu • Built with HTML & CSS • Hosted on GitHub Pages</p>
+      <p style="margin-top:0.5rem;font-size:0.875rem;opacity:0.8">
+        <a href="https://github.com/BANTURAKESH/portfolio" target="_blank" rel="noopener">View Source</a> • 
+        <a href="mailto:rakeshbantu04@gmail.com">Contact</a>
+      </p>
     </div>
   </footer>
 
   <script>
-    // Insert year
+    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile nav toggle
+    // Mobile navigation toggle
     const hambtn = document.getElementById('hambtn');
     const navmenu = document.getElementById('navmenu');
+    
     hambtn.addEventListener('click', () => {
       const expanded = hambtn.getAttribute('aria-expanded') === 'true';
       hambtn.setAttribute('aria-expanded', !expanded);
       navmenu.style.display = expanded ? 'none' : 'block';
     });
 
-    // Smooth scroll for internal links + set aria-current on scroll
+    // Smooth scrolling and active nav
     const navLinks = document.querySelectorAll('.nav-links a, #navmenu a');
-    navLinks.forEach(a => a.addEventListener('click', (e) => {
-      // allow normal for external
-      const href = a.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        e.preventDefault();
-        const el = document.querySelector(href);
-        el && el.scrollIntoView({behavior:'smooth',block:'start'});
-        // close mobile
-        navmenu.style.display = 'none';
-        hambtn.setAttribute('aria-expanded', 'false');
-      }
-    }));
-
-    // IntersectionObserver for active nav link highlight
-    const sections = document.querySelectorAll('main section, header');
-    const options = {threshold: 0.4};
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const id = entry.target.id;
-        const link = document.querySelector('.nav-links a[href="#' + id + '"]');
-        if (entry.isIntersecting) {
-          if (link) link.setAttribute('aria-current','true');
-        } else {
-          if (link) link.removeAttribute('aria-current');
+    const sections = document.querySelectorAll('section, header');
+    
+    // Handle click for smooth scroll
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Close mobile menu
+            navmenu.style.display = 'none';
+            hambtn.setAttribute('aria-expanded', 'false');
+          }
         }
       });
-    }, options);
-    sections.forEach(s => io.observe(s));
+    });
+
+    // Update active nav on scroll
+    const updateActiveNav = () => {
+      const scrollY = window.scrollY + 100;
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          document.querySelectorAll('.nav-links a').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    };
+
+    // Throttle scroll events
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveNav();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // Hide nav on scroll down, show on scroll up
+    let lastScroll = 0;
+    const nav = document.querySelector('nav');
+    
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        nav.style.transform = 'translateY(-100%)';
+      } else {
+        nav.style.transform = 'translateY(0)';
+      }
+      
+      lastScroll = currentScroll;
+    });
+
+    // Initialize
+    updateActiveNav();
   </script>
 </body>
 </html>
