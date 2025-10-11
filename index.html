@@ -71,6 +71,9 @@
     /* Container */
     .container{max-width:var(--maxw);margin:0 auto;padding:0 1.5rem}
 
+    /* Icons */
+    .icon{display:inline-block;width:16px;height:16px;vertical-align:middle;margin-right:0.5rem}
+    
     /* NAV */
     nav{
       position:sticky;top:0;z-index:100;
@@ -327,10 +330,49 @@
       font-weight:600;
     }
 
+    /* Blog Section */
+    .blog-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:1.5rem;
+    }
+    .blog-card{
+      display:flex;flex-direction:column;
+      height:100%;
+    }
+    .blog-icon{
+      width:60px;height:60px;
+      background:rgba(74,144,226,0.08);
+      border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      margin-bottom:1rem;
+      font-size:1.5rem;
+    }
+    .blog-date{
+      font-size:0.875rem;
+      color:var(--muted);
+      margin-bottom:0.5rem;
+    }
+    .blog-description{
+      flex-grow:1;
+      color:var(--text);
+      margin:0.75rem 0 1rem;
+      line-height:1.6;
+    }
+
     /* Contact */
     .contact-content{
       text-align:center;padding:2rem;
       background:linear-gradient(135deg,var(--surface),rgba(74,144,226,0.03));
+    }
+    .contact-quote{
+      font-size:1.25rem;
+      font-style:italic;
+      color:var(--text);
+      margin:0 0 1.5rem;
+      max-width:700px;
+      margin-left:auto;
+      margin-right:auto;
+      line-height:1.6;
     }
     .contact-links{
       display:flex;gap:1rem;justify-content:center;
@@ -373,6 +415,7 @@
       .btn{width:100%;justify-content:center}
       .skills-grid{grid-template-columns:1fr}
       .projects-grid{grid-template-columns:1fr}
+      .blog-grid{grid-template-columns:1fr}
     }
 
     /* Print */
@@ -406,6 +449,7 @@
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#publications">Publications</a>
+        <a href="#blog">Blog</a>
         <a href="#contact">Contact</a>
       </div>
 
@@ -422,6 +466,7 @@
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#publications">Publications</a>
+      <a href="#blog">Blog</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -487,10 +532,30 @@
           </p>
           <ul class="about-links">
             <li>📍 Syracuse, New York, USA</li>
-            <li>✉️ <a href="mailto:rakeshbantu04@gmail.com">rakeshbantu04@gmail.com</a></li>
-            <li>🔗 <a href="https://www.linkedin.com/in/rakesh-bantu/" target="_blank" rel="noopener">LinkedIn Profile</a></li>
-            <li>🆔 <a href="https://orcid.org/0009-0005-5178-3468" target="_blank" rel="noopener">ORCID: 0009-0005-5178-3468</a></li>
-            <li>📚 <a href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">GitHub: @BANTURAKESH</a></li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+              <a href="mailto:rakeshbantu04@gmail.com">rakeshbantu04@gmail.com</a>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <a href="https://www.linkedin.com/in/rakesh-bantu/" target="_blank" rel="noopener">LinkedIn Profile</a>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0 3c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7zm0 2c2.761 0 5 2.239 5 5s-2.239 5-5 5-5-2.239-5-5 2.239-5 5-5zm-1.5 5.5v-3h3v3h-3z"/>
+              </svg>
+              <a href="https://orcid.org/0009-0005-5178-3468" target="_blank" rel="noopener">ORCID: 0009-0005-5178-3468</a>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              <a href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">GitHub: @BANTURAKESH</a>
+            </li>
           </ul>
         </div>
         
@@ -515,56 +580,94 @@
       <h2 class="section-title">Technical Expertise</h2>
       <div class="skills-grid">
         <div class="card skill-card">
-          <h3>Machine Learning & AI</h3>
+          <h3>Programming & Tools</h3>
           <div class="skill-tags">
-            <span class="skill-tag">PyTorch</span>
-            <span class="skill-tag">TensorFlow</span>
-            <span class="skill-tag">Scikit-learn</span>
-            <span class="skill-tag">Deep Learning</span>
-            <span class="skill-tag">NLP</span>
-            <span class="skill-tag">Computer Vision</span>
-            <span class="skill-tag">Feature Engineering</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">Bioconductor</span>
+            <span class="skill-tag">tidyverse</span>
+            <span class="skill-tag">dplyr</span>
+            <span class="skill-tag">ggplot2</span>
+            <span class="skill-tag">SQL/MySQL</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Git/GitHub</span>
           </div>
         </div>
 
         <div class="card skill-card">
-          <h3>Bioinformatics & Genomics</h3>
+          <h3>Machine Learning & Deep Learning</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">Keras</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">OpenCV</span>
+            <span class="skill-tag">ANN/CNN/RNN</span>
+            <span class="skill-tag">NLP/NLTK</span>
+            <span class="skill-tag">Time Series</span>
+            <span class="skill-tag">Feature Selection</span>
+          </div>
+        </div>
+
+        <div class="card skill-card">
+          <h3>Genomics & Bioinformatics</h3>
           <div class="skill-tags">
             <span class="skill-tag">scRNA-seq</span>
             <span class="skill-tag">Seurat</span>
             <span class="skill-tag">Scanpy</span>
             <span class="skill-tag">10X Genomics</span>
-            <span class="skill-tag">SCTransform</span>
-            <span class="skill-tag">Bioconductor</span>
-            <span class="skill-tag">Galaxy.eu</span>
             <span class="skill-tag">NGS Analysis</span>
+            <span class="skill-tag">Galaxy.eu</span>
+            <span class="skill-tag">Multi-omics</span>
+            <span class="skill-tag">Pathway Enrichment</span>
+            <span class="skill-tag">Network Analysis</span>
+            <span class="skill-tag">Biomarker Discovery</span>
           </div>
         </div>
 
         <div class="card skill-card">
-          <h3>Drug Discovery</h3>
+          <h3>Drug Discovery & Chemoinformatics</h3>
           <div class="skill-tags">
             <span class="skill-tag">RDKit</span>
             <span class="skill-tag">Molecular Docking</span>
-            <span class="skill-tag">AutoDock</span>
-            <span class="skill-tag">Schrodinger</span>
-            <span class="skill-tag">SBDD</span>
+            <span class="skill-tag">AutoDock/Vina</span>
+            <span class="skill-tag">Schrodinger Maestro</span>
+            <span class="skill-tag">PyMOL</span>
+            <span class="skill-tag">SBDD/FBDD</span>
             <span class="skill-tag">Virtual Screening</span>
-            <span class="skill-tag">QikProp</span>
+            <span class="skill-tag">Pharmacophore</span>
+            <span class="skill-tag">GROMACS</span>
+            <span class="skill-tag">NAMD/VMD</span>
           </div>
         </div>
 
         <div class="card skill-card">
-          <h3>Programming & Tools</h3>
+          <h3>Data Science & Visualization</h3>
           <div class="skill-tags">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">R</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">Git/GitHub</span>
-            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">Seaborn</span>
+            <span class="skill-tag">Plotly</span>
             <span class="skill-tag">BioPython</span>
-            <span class="skill-tag">Jupyter</span>
-            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Data Mining</span>
+            <span class="skill-tag">WEKA</span>
+          </div>
+        </div>
+
+        <div class="card skill-card">
+          <h3>Databases & Resources</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">PDB</span>
+            <span class="skill-tag">GenBank</span>
+            <span class="skill-tag">PubMed</span>
+            <span class="skill-tag">UniProt</span>
+            <span class="skill-tag">KEGG</span>
+            <span class="skill-tag">GEO</span>
+            <span class="skill-tag">TCGA</span>
+            <span class="skill-tag">DrugBank</span>
+            <span class="skill-tag">PubChem</span>
+            <span class="skill-tag">String DB</span>
           </div>
         </div>
       </div>
@@ -581,8 +684,7 @@
             <h3>Research Assistant</h3>
             <div class="company">Syracuse University • Syracuse, NY</div>
             <p>
-              Conducting research in computational biology and biomedical engineering. 
-              Developing novel ML approaches for single-cell data analysis and cell type identification.
+              Conducting research in Single-cell RNA sequencing, Bioinformatics, and Biomedical Engineering.
             </p>
           </div>
         </div>
@@ -592,7 +694,7 @@
           <div class="timeline-content">
             <span class="timeline-date">Oct 2023 - Jun 2025</span>
             <h3>Research Associate</h3>
-            <div class="company">Aragen Life Sciences Ltd • Hyderabad, India</div>
+            <div class="company"><a href="https://www.aragen.com/" target="_blank" rel="noopener">Aragen Life Sciences Ltd</a> • Hyderabad, India</div>
             <p>
               Built ML models for pharmacokinetic parameters (Vdss, PPB) prediction. 
               Implemented deep learning solutions for small molecule generation using reinforcement learning.
@@ -606,8 +708,9 @@
           <div class="timeline-content">
             <span class="timeline-date">Jan 2023 - Jul 2023</span>
             <h3>Master's Thesis Research</h3>
-            <div class="company">Central University of Punjab • India</div>
+            <div class="company"><a href="https://cup.edu.in/" target="_blank" rel="noopener">Central University of Punjab</a> • India</div>
             <p>
+              <strong>Under the supervision of <a href="https://cup.edu.in/Dr_Arti_Sharma.php" target="_blank" rel="noopener">Dr. Arti Sharma</a></strong><br>
               Identified blood transcriptome biomarkers for early Parkinson's Disease diagnosis. 
               Achieved 90% accuracy with MLP algorithm on gene expression data from GEO database.
             </p>
@@ -644,6 +747,9 @@
           <p class="project-description">
             Deep learning models predicting Vdss and PPB parameters using molecular descriptors from RDKit 
             and Schrodinger QikProp. Achieved R² of 0.85 on external validation with 10,000+ compounds.
+          </p>
+          <p style="font-size:0.875rem;color:var(--muted);margin-top:0.5rem">
+            <strong>Under the supervision of <a href="https://www.linkedin.com/in/samiron-phukan-3312226/" target="_blank" rel="noopener">Dr. Samiron Phukan</a></strong>
           </p>
           <div class="project-meta">
             <span>💊 Drug Discovery</span>
@@ -698,14 +804,53 @@
       </article>
     </section>
 
+    <!-- BLOG -->
+    <section id="blog" class="container">
+      <h2 class="section-title">Blog Posts</h2>
+      <div class="blog-grid">
+        
+        <article class="card blog-card">
+          <div class="blog-icon">📚</div>
+          <span class="blog-date">LinkedIn Article</span>
+          <h3>My Learning Journey: Free Resources That Transformed My Machine Learning Skills</h3>
+          <p class="blog-description">
+            A comprehensive guide to the free online resources, courses, and platforms that helped me master 
+            machine learning and deep learning. From beginner tutorials to advanced implementations, discover 
+            the learning path that can accelerate your AI journey without breaking the bank.
+          </p>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/pulse/my-learning-journey-free-resources-transformed-machine-rakesh-bantu-yic3c/" target="_blank" rel="noopener">
+            Read Article →
+          </a>
+        </article>
+
+        <article class="card blog-card">
+          <div class="blog-icon">🎓</div>
+          <span class="blog-date">LinkedIn Article</span>
+          <h3>Complete PhD Application Handbook: Requirements & Documents Guide</h3>
+          <p class="blog-description">
+            A detailed roadmap for aspiring PhD students covering everything from choosing the right program 
+            to crafting compelling applications. Learn about essential documents, timeline management, funding 
+            opportunities, and insider tips that can make your application stand out in competitive programs.
+          </p>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/pulse/complete-phd-application-handbook-requirements-documents-rakesh-bantu-ilh2c/" target="_blank" rel="noopener">
+            Read Article →
+          </a>
+        </article>
+
+      </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact" class="container">
       <h2 class="section-title">Let's Connect</h2>
       <div class="card contact-content">
-        <h3 style="margin:0 0 0.5rem">Open to Opportunities</h3>
+        <p class="contact-quote">
+          "Research is to see what everybody else has seen, and think what nobody else has thought."<br>
+          <span style="font-size:0.9rem;color:var(--muted)">— Albert Szent-Györgyi</span>
+        </p>
         <p style="margin:0 auto 1.5rem;max-width:600px;color:var(--muted)">
-          I'm actively seeking research collaborations, internship opportunities, and consulting projects 
-          in bioinformatics, machine learning, and drug discovery.
+          I'm always excited to discuss new research ideas, collaborate on innovative projects, 
+          or explore how computational biology can solve real-world healthcare challenges.
         </p>
         <div class="contact-links">
           <a class="social-link" href="mailto:rakeshbantu04@gmail.com">
