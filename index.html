@@ -26,7 +26,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    /* ---- Palette (requested) ---- */
+    /* ---- Light Mode (default) ---- */
     :root{
       --bg: #F4F4F4;
       --surface: #FFFFFF;
@@ -40,6 +40,22 @@
       --shadow: 0 4px 14px rgba(46,46,46,0.06);
       --shadow-lg: 0 10px 30px rgba(46,46,46,0.12);
       --glass: rgba(255,255,255,0.8);
+      --border: rgba(46,46,46,0.08);
+    }
+    
+    /* ---- Dark Mode ---- */
+    [data-theme="dark"]{
+      --bg: #1a1a1a;
+      --surface: #2d2d2d;
+      --text: #e5e5e5;
+      --muted: #a3a3a3;
+      --accent: #5a9fff;
+      --accent-hover: #4788e5;
+      --success: #10B981;
+      --shadow: 0 4px 14px rgba(0,0,0,0.3);
+      --shadow-lg: 0 10px 30px rgba(0,0,0,0.5);
+      --glass: rgba(45,45,45,0.8);
+      --border: rgba(255,255,255,0.08);
     }
 
     /* ---- Base ---- */
@@ -55,7 +71,7 @@
     }
     
     h1,h2,h3,h4{font-family:"Inter",sans-serif;font-weight:700;line-height:1.2}
-    a{color:var(--accent);text-decoration:none;transition:color 0.2s}
+    a{color:var(--accent);text-decoration:none;transition:color 0.2s;font-weight:normal}
     a:hover{color:var(--accent-hover)}
     a:focus-visible{outline:3px solid rgba(74,144,226,0.25);outline-offset:3px;border-radius:4px}
     img{max-width:100%;height:auto;display:block}
@@ -80,8 +96,7 @@
       background:var(--glass);
       backdrop-filter:blur(10px);
       -webkit-backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(46,46,46,0.08);
-      transition:transform 0.3s;
+      border-bottom:1px solid var(--border);
     }
     .nav-inner{
       display:flex;align-items:center;justify-content:space-between;
@@ -99,21 +114,21 @@
     .nav-links{display:flex;gap:0.5rem;align-items:center}
     .nav-links a{
       padding:0.5rem 0.75rem;border-radius:8px;color:var(--text);
-      font-weight:500;font-size:0.95rem;transition:all 0.2s;
+      font-weight:normal;font-size:0.95rem;transition:all 0.2s;
     }
     .nav-links a:hover{background:rgba(74,144,226,0.08);color:var(--accent)}
     .nav-links a.active{background:rgba(74,144,226,0.12);color:var(--accent)}
     
     .hamburger{
-      display:none;border:1px solid rgba(46,46,46,0.12);
+      display:none;border:1px solid var(--border);
       background:var(--surface);padding:0.5rem;border-radius:8px;
-      cursor:pointer;font-size:1.25rem;
+      cursor:pointer;font-size:1.25rem;color:var(--text);
     }
     
     #navmenu{
       display:none;background:var(--glass);
       backdrop-filter:blur(10px);padding:1rem;
-      border-top:1px solid rgba(46,46,46,0.08);
+      border-top:1px solid var(--border);
     }
     #navmenu a{
       display:block;padding:0.5rem 1rem;color:var(--text);
@@ -230,12 +245,6 @@
       display:grid;grid-template-columns:2fr 1fr;gap:2rem;
       align-items:start;
     }
-    .about-links{
-      list-style:none;padding:0;margin:1rem 0;
-      display:flex;flex-direction:column;gap:0.5rem;
-    }
-    .about-links li{display:flex;align-items:center;gap:0.5rem}
-    .about-links a{font-weight:500}
     
     .quick-facts{
       background:rgba(74,144,226,0.03);
@@ -266,7 +275,7 @@
     .skill-tag{
       background:rgba(74,144,226,0.08);color:var(--accent);
       padding:0.25rem 0.625rem;border-radius:6px;
-      font-size:0.825rem;font-weight:600;
+      font-size:0.825rem;font-weight:500;
     }
 
     /* Projects */
@@ -327,7 +336,7 @@
     .publication-meta strong{color:var(--text)}
     .publication-link{
       display:inline-flex;align-items:center;gap:0.25rem;
-      font-weight:600;
+      font-weight:normal;
     }
 
     /* Blog Section */
@@ -382,7 +391,7 @@
       display:inline-flex;align-items:center;gap:0.5rem;
       padding:0.75rem 1.25rem;background:var(--surface);
       border-radius:12px;border:1px solid rgba(46,46,46,0.08);
-      color:var(--text);font-weight:500;
+      color:var(--text);font-weight:normal;
       transition:all 0.2s;
     }
     .social-link:hover{
@@ -452,10 +461,20 @@
         <a href="#blog">Blog</a>
         <a href="#contact">Contact</a>
       </div>
-
-      <button class="hamburger" id="hambtn" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle menu">
-        ☰
-      </button>
+      
+      <div style="display:flex;align-items:center;gap:1rem">
+        <button id="theme-toggle" aria-label="Toggle theme" style="background:transparent;border:1px solid var(--border);padding:0.5rem;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;width:36px;height:36px">
+          <svg id="sun-icon" style="width:20px;height:20px;fill:var(--text);display:block" viewBox="0 0 24 24">
+            <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+          </svg>
+          <svg id="moon-icon" style="width:20px;height:20px;fill:var(--text);display:none" viewBox="0 0 24 24">
+            <path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.06 7 9.54 0 4.48-2.94 8.27-7 9.54.95.3 1.95.46 3 .46 5.52 0 10-4.48 10-10S14.52 2 9 2z"/>
+          </svg>
+        </button>
+        <button class="hamburger" id="hambtn" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle menu">
+          ☰
+        </button>
+      </div>
     </div>
 
     <!-- Mobile menu -->
@@ -483,34 +502,42 @@
                height="180">
           <h2 class="hero-name">Rakesh Bantu</h2>
           <p class="hero-title">PhD Scholar in Biomedical Engineering</p>
-          <p class="hero-title">📍 Syracuse, New York, USA</p>
+          <p style="margin:0.5rem 0;color:var(--muted);font-size:0.9rem">📍 Syracuse, New York, USA</p>
           <div class="status-badge">Available for Research Collaborations</div>
         </div>
 
         <div class="hero-content">
           <h1>Transforming Healthcare Through AI & Computational Biology</h1>
           <p class="hero-bio">
-             Highly motivated and result-oriented Researcher with a deep passion for integrating Computer science, and computational
-             biology to advance the understanding of life sciences field. Committed to utilizing these cutting-edge technologies to
-             unlock a deeper understanding of biological systems, ultimately paving the way for transformative advancements in the
-             fight against human diseases. Eager to contribute expertise and foster collaboration within multidisciplinary teams to
-             accelerate scientific discovery and generate a positive impact on global health and sustainability.
+            Highly motivated and result-oriented Researcher with a deep passion for integrating Computer science 
+            and computational biology to advance the understanding of life sciences field. Committed to utilizing 
+            these cutting-edge technologies to unlock a deeper understanding of biological systems, ultimately 
+            paving the way for transformative advancements in the fight against human diseases.
           </p>
           
-          <div class="hero-ctas">
-            <a class="btn btn-primary" href="mailto:rakeshbantu04@gmail.com">
-              <span>📧</span> Get in Touch
+          <div style="display:flex;gap:1.5rem;margin:1rem 0;flex-wrap:wrap">
+            <a href="https://www.linkedin.com/in/rakesh-bantu/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5rem;color:var(--text);font-weight:normal">
+              <svg style="width:20px;height:20px;fill:var(--accent)" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              LinkedIn Profile
             </a>
-            <a class="btn btn-secondary" href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">
-              <span>💻</span> GitHub
+            <a href="https://orcid.org/0009-0005-5178-3468" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5rem;color:var(--text);font-weight:normal">
+              <svg style="width:20px;height:20px;fill:var(--accent)" viewBox="0 0 24 24">
+                <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/>
+              </svg>
+              ORCID: 0009-0005-5178-3468
             </a>
-            <a class="btn btn-secondary" href="assets/docs/resume.pdf" download>
-              <span>📄</span> Download CV
+            <a href="https://github.com/BANTURAKESH" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5rem;color:var(--text);font-weight:normal">
+              <svg style="width:20px;height:20px;fill:var(--accent)" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              GitHub: @BANTURAKESH
             </a>
           </div>
-
+          
           <div class="hero-meta">
-            <strong>Research Interests:</strong> scRNA-seq • Drug Discovery • Deep Learning • Biomarker Discovery<br>
+            <strong>Research Interests:</strong> scRNA-seq • Drug Discovery • Deep Learning • Biomarker Discovery
           </div>
         </div>
       </div>
@@ -522,9 +549,8 @@
       <div class="about-grid">
         <div class="card">
           <p style="margin-top:0;font-size:1.05rem;line-height:1.7">
-            PhD student in Biomedical Engineering at Syracuse University. My research applies machine learning to 
-            single-cell genomics and drug discovery. I focus on developing reproducible computational pipelines, 
-            interpretable models, and translating computational methods into biological insights.
+            My research focuses on developing reproducible computational pipelines, interpretable models, 
+            and translating computational methods into biological insights.
           </p>
           <p>
             Previously, I worked as a Research Associate at Aragen Life Sciences, building ML models for 
@@ -532,33 +558,6 @@
             Master's in Bioinformatics from Central University of Punjab, where my thesis focused on 
             identifying blood transcriptome biomarkers for early Parkinson's disease diagnosis.
           </p>
-          <ul class="about-links">
-            <li>📍 Syracuse, New York, USA</li>
-            <li>
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-              </svg>
-              <a href="mailto:rakeshbantu04@gmail.com">rakeshbantu04@gmail.com</a>
-            </li>
-            <li>
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-              <a href="https://www.linkedin.com/in/rakesh-bantu/" target="_blank" rel="noopener">LinkedIn Profile</a>
-            </li>
-            <li>
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0 3c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7zm0 2c2.761 0 5 2.239 5 5s-2.239 5-5 5-5-2.239-5-5 2.239-5 5-5zm-1.5 5.5v-3h3v3h-3z"/>
-              </svg>
-              <a href="https://orcid.org/0009-0005-5178-3468" target="_blank" rel="noopener">ORCID: 0009-0005-5178-3468</a>
-            </li>
-            <li>
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              <a href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">GitHub: @BANTURAKESH</a>
-            </li>
-          </ul>
         </div>
         
         <div class="card quick-facts">
@@ -698,6 +697,7 @@
             <h3>Research Associate</h3>
             <div class="company"><a href="https://www.aragen.com/" target="_blank" rel="noopener">Aragen Life Sciences Ltd</a> • Hyderabad, India</div>
             <p>
+              <strong>Under the supervision of <a href="https://www.linkedin.com/in/samiron-phukan-3312226/" target="_blank" rel="noopener">Dr. Samiron Phukan</a></strong><br>
               Built ML models for pharmacokinetic parameters (Vdss, PPB) prediction. 
               Implemented deep learning solutions for small molecule generation using reinforcement learning.
               Contributed to CADD research projects.
@@ -727,18 +727,20 @@
       <div class="projects-grid">
         
         <article class="card project-card">
-          <h3>scRNA-seq Pipeline Development</h3>
+          <h3>Single-Cell RNA-seq Analysis Pipeline</h3>
           <p class="project-description">
-            Comprehensive single-cell analysis pipeline processing 10X Genomics data.
+            This repository contains an end-to-end pipeline for Single-Cell RNA Sequencing (scRNA-seq) data analysis using the Python library, Scanpy.
+            It demonstrates rigorous Quality Control (QC), normalization, and dimensionality reduction (PCA/UMAP) on the public PBMC 3k dataset.
+            The core output is the unbiased clustering (Leiden algorithm) to identify 6 distinct cell types, followed by Marker Gene Identification.
           </p>
           <div class="project-meta">
             <span>🧬 Bioinformatics</span>
-            <span>• R/Python</span>
-            <span>• Seurat v5</span>
+            <span>• Python</span>
+            <span>• Scanpy</span>
             <span>• 2025</span>
           </div>
           <div class="project-actions">
-            <a class="btn btn-secondary" href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">View Code</a>
+            <a class="btn btn-secondary" href="https://github.com/BANTURAKESH/Single-cell-Sequencing-Scanpy-" target="_blank" rel="noopener">View Code</a>
             <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">Documentation</a>
           </div>
         </article>
@@ -747,7 +749,7 @@
           <h3>Pharmacokinetic Parameters Prediction</h3>
           <p class="project-description">
             Deep learning models predicting Vdss and PPB parameters using molecular descriptors from RDKit 
-            and Schrodinger QikProp.
+            and Schrodinger QikProp. Achieved R² of 0.85 on external validation with 10,000+ compounds.
           </p>
           <p style="font-size:0.875rem;color:var(--muted);margin-top:0.5rem">
             <strong>Under the supervision of <a href="https://www.linkedin.com/in/samiron-phukan-3312226/" target="_blank" rel="noopener">Dr. Samiron Phukan</a></strong>
@@ -855,16 +857,16 @@
         </p>
         <div class="contact-links">
           <a class="social-link" href="mailto:rakeshbantu04@gmail.com">
-            <span>📧</span> Email
+            <svg style="width:20px;height:20px;fill:currentColor" viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            Email
           </a>
           <a class="social-link" href="https://www.linkedin.com/in/rakesh-bantu/" target="_blank" rel="noopener">
-            <span>💼</span> LinkedIn
-          </a>
-          <a class="social-link" href="https://github.com/BANTURAKESH" target="_blank" rel="noopener">
-            <span>💻</span> GitHub
-          </a>
-          <a class="social-link" href="https://orcid.org/0009-0005-5178-3468" target="_blank" rel="noopener">
-            <span>🆔</span> ORCID
+            <svg style="width:20px;height:20px;fill:#0077B5" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            LinkedIn
           </a>
         </div>
       </div>
@@ -884,6 +886,37 @@
   <script>
     // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    const htmlElement = document.documentElement;
+    
+    // Check for saved theme preference or default to light
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'dark') {
+      htmlElement.setAttribute('data-theme', 'dark');
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+    }
+    
+    // Theme toggle
+    themeToggle.addEventListener('click', () => {
+      const isDark = htmlElement.getAttribute('data-theme') === 'dark';
+      
+      if (isDark) {
+        htmlElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      } else {
+        htmlElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      }
+    });
 
     // Mobile navigation toggle
     const hambtn = document.getElementById('hambtn');
@@ -907,7 +940,15 @@
           e.preventDefault();
           const target = document.querySelector(href);
           if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Calculate offset for sticky nav
+            const navHeight = document.querySelector('nav').offsetHeight;
+            const targetPosition = target.offsetTop - navHeight - 10;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+            
             // Close mobile menu
             navmenu.style.display = 'none';
             hambtn.setAttribute('aria-expanded', 'false');
@@ -948,25 +989,8 @@
       }
     });
 
-    // Hide nav on scroll down, show on scroll up
-    let lastScroll = 0;
-    const nav = document.querySelector('nav');
-    
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.scrollY;
-      
-      if (currentScroll > lastScroll && currentScroll > 100) {
-        nav.style.transform = 'translateY(-100%)';
-      } else {
-        nav.style.transform = 'translateY(0)';
-      }
-      
-      lastScroll = currentScroll;
-    });
-
     // Initialize
     updateActiveNav();
   </script>
 </body>
 </html>
-
